@@ -348,6 +348,7 @@ void NavEKF2_core::FuseMagnetometer()
     Vector6 SK_MZ;
 
     hal.util->perf_end(_perf_test[1]);
+    for (uint8_t i = 0; i<=stateIndexLim; i++) H_MAG[i] = 0.0f; 
     
     // perform sequential fusion of magnetometer measurements.
     // this assumes that the errors in the different components are

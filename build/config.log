@@ -1,13 +1,13 @@
-# project  configured on Wed Nov 27 14:48:53 2024 by
-# waf 2.0.9 (abi 20, python 20711f0 on linux2)
-# using /home/mahathi/mathur407_payload2/4.0.7/modules/waf/waf-light configure --board CUAVv5 --no-submodule-update --force
+# project  configured on Wed Nov 27 20:49:44 2024 by
+# waf 2.0.9 (abi 20, python 30a0cf0 on linux)
+# using /home/mahathi/mathur_payload2/zaspixhawkap/modules/waf/waf-light configure --board CUAVv5
 #
 ----------------------------------------
 Setting top to
-/home/mahathi/mathur407_payload2/4.0.7
+/home/mahathi/mathur_payload2/zaspixhawkap
 ----------------------------------------
 Setting out to
-/home/mahathi/mathur407_payload2/4.0.7/build
+/home/mahathi/mathur_payload2/zaspixhawkap/build
 ----------------------------------------
 Autoconfiguration
 enabled
@@ -19,7 +19,7 @@ Using toolchain
 arm-none-eabi
 ----------------------------------------
 Checking for 'g++' (C++ compiler)
-find program=['arm-none-eabi-g++', 'arm-none-eabi-c++'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='CXX' -> ['/usr/lib/ccache/arm-none-eabi-g++']
+find program=['arm-none-eabi-g++', 'arm-none-eabi-c++'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='CXX' -> ['/usr/lib/ccache/arm-none-eabi-g++']
 ['/usr/lib/ccache/arm-none-eabi-g++', '-dM', '-E', '-']
 out: #define __DBL_MIN_EXP__ (-1021)
 #define __HQ_FBIT__ 15
@@ -415,11 +415,11 @@ out: #define __DBL_MIN_EXP__ (-1021)
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
 
-find program=['ar'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='AR' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-ar']
+find program=['ar'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='AR' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-ar']
 /usr/lib/ccache/arm-none-eabi-g++
 ----------------------------------------
 Checking for 'gcc' (C compiler)
-find program=['arm-none-eabi-gcc', 'arm-none-eabi-cc'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='CC' -> ['/usr/lib/ccache/arm-none-eabi-gcc']
+find program=['arm-none-eabi-gcc', 'arm-none-eabi-cc'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='CC' -> ['/usr/lib/ccache/arm-none-eabi-gcc']
 ['/usr/lib/ccache/arm-none-eabi-gcc', '-dM', '-E', '-']
 out: #define __DBL_MIN_EXP__ (-1021)
 #define __HQ_FBIT__ 15
@@ -815,14 +815,14 @@ out: #define __DBL_MIN_EXP__ (-1021)
 #define __ATOMIC_ACQ_REL 4
 #define __ATOMIC_RELEASE 3
 
-find program=['ar'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='AR' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-ar']
+find program=['ar'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='AR' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-ar']
 /usr/lib/ccache/arm-none-eabi-gcc
 ----------------------------------------
 Checking for c flags '-MMD'
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_66805e0534d01825cfb0a7a3daf7b779/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_900f31cf9f52dc9e729666c379d270e2/test.c[0m
 
 ['/usr/lib/ccache/arm-none-eabi-gcc', '-MMD', '-DWAF_BUILD=1', '../../test.c', '-c', '-otest.c.1.o']
 yes
@@ -831,24 +831,24 @@ Checking for cxx flags '-MMD'
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_801d0a2be7131ef8a4a3ed088c8a74e0/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_75655dbbd0cddffb192cd9ddafcc9d8e/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-MMD', '-DWAF_BUILD=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
 yes
 ----------------------------------------
 Checking for program 'make'
 /usr/bin/make
-find program=['make'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='MAKE' -> ['/usr/bin/make']
+find program=['make'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='MAKE' -> ['/usr/bin/make']
 --------------------------------------------
 Checking for program 'arm-none-eabi-objcopy'
 /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-objcopy
-find program=['arm-none-eabi-objcopy'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='OBJCOPY' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-objcopy']
+find program=['arm-none-eabi-objcopy'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='OBJCOPY' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-objcopy']
 --------------------------------------------
 Enabling ChibiOS asserts
 no
 --------------------------------------------
 Checking for intelhex module:
-disabled
+OK
 --------------------------------------------
 Checking for HAVE_CMATH_ISFINITE
 ==>
@@ -859,12 +859,12 @@ Checking for HAVE_CMATH_ISFINITE
           return std::isfinite(1.0f);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_ee6624619f7b8196e5759084ea9a6dd8/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_f14f36937118810e95609062bd6c65c9/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_ee6624619f7b8196e5759084ea9a6dd8/testbuild/CUAVv5/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_f14f36937118810e95609062bd6c65c9/testbuild/CUAVv5/testprog[0m
 
-['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur407_payload2/4.0.7/build/CUAVv5', '-L/home/mahathi/mathur407_payload2/4.0.7/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur407_payload2/4.0.7/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
+['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur_payload2/zaspixhawkap/build/CUAVv5', '-L/home/mahathi/mathur_payload2/zaspixhawkap/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur_payload2/zaspixhawkap/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
 err: /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol Reset_Handler; defaulting to 0000000008008000
 
 yes
@@ -878,12 +878,12 @@ Checking for HAVE_CMATH_ISINF
           return std::isinf(1.0f);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_353d3f8d273264c478c8ec68d4200cd0/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_ddeb2624666146b431a66bbe4ea791ba/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_353d3f8d273264c478c8ec68d4200cd0/testbuild/CUAVv5/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_ddeb2624666146b431a66bbe4ea791ba/testbuild/CUAVv5/testprog[0m
 
-['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur407_payload2/4.0.7/build/CUAVv5', '-L/home/mahathi/mathur407_payload2/4.0.7/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur407_payload2/4.0.7/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
+['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur_payload2/zaspixhawkap/build/CUAVv5', '-L/home/mahathi/mathur_payload2/zaspixhawkap/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur_payload2/zaspixhawkap/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
 err: /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol Reset_Handler; defaulting to 0000000008008000
 
 yes
@@ -897,12 +897,12 @@ Checking for HAVE_CMATH_ISNAN
           return std::isnan(1.0f);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_275a2bad6fc587721f238ba94791b139/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_36f9185a38c136b06bef9063237fd5e7/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_275a2bad6fc587721f238ba94791b139/testbuild/CUAVv5/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_36f9185a38c136b06bef9063237fd5e7/testbuild/CUAVv5/testprog[0m
 
-['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur407_payload2/4.0.7/build/CUAVv5', '-L/home/mahathi/mathur407_payload2/4.0.7/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur407_payload2/4.0.7/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
+['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur_payload2/zaspixhawkap/build/CUAVv5', '-L/home/mahathi/mathur_payload2/zaspixhawkap/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur_payload2/zaspixhawkap/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
 err: /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol Reset_Handler; defaulting to 0000000008008000
 
 yes
@@ -919,12 +919,12 @@ Checking for NEED_CMATH_ISFINITE_STD_NAMESPACE
           return isfinite((double)1);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_06d0b990afd89021c61c1b7750ae95d4/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_4e7e73180bcdff9c1bbd4a4a42f46fdb/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_06d0b990afd89021c61c1b7750ae95d4/testbuild/CUAVv5/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_4e7e73180bcdff9c1bbd4a4a42f46fdb/testbuild/CUAVv5/testprog[0m
 
-['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur407_payload2/4.0.7/build/CUAVv5', '-L/home/mahathi/mathur407_payload2/4.0.7/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur407_payload2/4.0.7/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
+['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur_payload2/zaspixhawkap/build/CUAVv5', '-L/home/mahathi/mathur_payload2/zaspixhawkap/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur_payload2/zaspixhawkap/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
 err: /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol Reset_Handler; defaulting to 0000000008008000
 
 yes
@@ -941,12 +941,12 @@ Checking for NEED_CMATH_ISINF_STD_NAMESPACE
           return isinf((double)1);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_31fb7e64453fe4a8c00d7a000aa0fca3/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_8092be7a8b8026a9ee7e4f713cc21ba8/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_31fb7e64453fe4a8c00d7a000aa0fca3/testbuild/CUAVv5/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_8092be7a8b8026a9ee7e4f713cc21ba8/testbuild/CUAVv5/testprog[0m
 
-['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur407_payload2/4.0.7/build/CUAVv5', '-L/home/mahathi/mathur407_payload2/4.0.7/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur407_payload2/4.0.7/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
+['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur_payload2/zaspixhawkap/build/CUAVv5', '-L/home/mahathi/mathur_payload2/zaspixhawkap/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur_payload2/zaspixhawkap/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
 err: /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol Reset_Handler; defaulting to 0000000008008000
 
 yes
@@ -963,12 +963,12 @@ Checking for NEED_CMATH_ISNAN_STD_NAMESPACE
           return isnan((double)1);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_445d88bd2daa80ade961acdea3efe464/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_665f11deab3fd826117470e905433776/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_445d88bd2daa80ade961acdea3efe464/testbuild/CUAVv5/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_665f11deab3fd826117470e905433776/testbuild/CUAVv5/testprog[0m
 
-['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur407_payload2/4.0.7/build/CUAVv5', '-L/home/mahathi/mathur407_payload2/4.0.7/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur407_payload2/4.0.7/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
+['/usr/lib/ccache/arm-none-eabi-g++', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-u_port_lock', '-u_port_unlock', '-u_exit', '-u_kill', '-u_getpid', '-u_errno', '-uchThdExit', '-fno-common', '-nostartfiles', '-mno-thumb-interwork', '-mthumb', '-specs=nano.specs', '-specs=nosys.specs', '-L/home/mahathi/mathur_payload2/zaspixhawkap/build/CUAVv5', '-L/home/mahathi/mathur_payload2/zaspixhawkap/modules/ChibiOS/os/common/startup/ARMCMx/compilers/GCC/ld', '-L/home/mahathi/mathur_payload2/zaspixhawkap/libraries/AP_HAL_ChibiOS/hwdef/common', '-Wl,--gc-sections,--no-warn-mismatch,--library-path=/ld,--script=ldscript.ld,--defsym=__process_stack_size__=0x2000,--defsym=__main_stack_size__=0x400', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lgcc', '-lm']
 err: /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol Reset_Handler; defaulting to 0000000008008000
 
 yes
@@ -983,7 +983,7 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_948d5769d118cfb615dc605977f88d25/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_05d069150eb98341dc3758fd0eea84c0/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '-DNEED_CMATH_ISNAN_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
 err: ../../test.cpp:1:10: fatal error: endian.h: No such file or directory
@@ -991,18 +991,18 @@ err: ../../test.cpp:1:10: fatal error: endian.h: No such file or directory
       |          ^~~~~~~~~~
 compilation terminated.
 
-from /home/mahathi/mathur407_payload2/4.0.7: Test does not build: Traceback (most recent call last):
-  File "/home/mahathi/mathur407_payload2/4.0.7/modules/waf/waflib/Configure.py", line 584, in run_build
+from /home/mahathi/mathur_payload2/zaspixhawkap: Test does not build: Traceback (most recent call last):
+  File "/home/mahathi/mathur_payload2/zaspixhawkap/modules/waf/waflib/Configure.py", line 584, in run_build
     bld.compile()
-  File "/home/mahathi/mathur407_payload2/4.0.7/modules/waf/waflib/Build.py", line 355, in compile
+  File "/home/mahathi/mathur_payload2/zaspixhawkap/modules/waf/waflib/Build.py", line 355, in compile
     raise Errors.BuildError(self.producer.error)
-BuildError: Build failed
+waflib.Errors.BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140513950911312: cxx test.cpp -> test.cpp.1.o}
+	{task 140669037885952: cxx test.cpp -> test.cpp.1.o}
  (run with -v to display more information)
 
 not found
-from /home/mahathi/mathur407_payload2/4.0.7: The configuration failed
+from /home/mahathi/mathur_payload2/zaspixhawkap: The configuration failed
 ----------------------------------------------
 Checking for header byteswap.h
 ==>
@@ -1014,7 +1014,7 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_fb0c729a7198f3d6713d9580b906c8af/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_29de0ec0b7899e9bf165da445bde0328/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '-DNEED_CMATH_ISNAN_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
 err: ../../test.cpp:1:10: fatal error: byteswap.h: No such file or directory
@@ -1022,18 +1022,18 @@ err: ../../test.cpp:1:10: fatal error: byteswap.h: No such file or directory
       |          ^~~~~~~~~~~~
 compilation terminated.
 
-from /home/mahathi/mathur407_payload2/4.0.7: Test does not build: Traceback (most recent call last):
-  File "/home/mahathi/mathur407_payload2/4.0.7/modules/waf/waflib/Configure.py", line 584, in run_build
+from /home/mahathi/mathur_payload2/zaspixhawkap: Test does not build: Traceback (most recent call last):
+  File "/home/mahathi/mathur_payload2/zaspixhawkap/modules/waf/waflib/Configure.py", line 584, in run_build
     bld.compile()
-  File "/home/mahathi/mathur407_payload2/4.0.7/modules/waf/waflib/Build.py", line 355, in compile
+  File "/home/mahathi/mathur_payload2/zaspixhawkap/modules/waf/waflib/Build.py", line 355, in compile
     raise Errors.BuildError(self.producer.error)
-BuildError: Build failed
+waflib.Errors.BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140513950228048: cxx test.cpp -> test.cpp.1.o}
+	{task 140669038419008: cxx test.cpp -> test.cpp.1.o}
  (run with -v to display more information)
 
 not found
-from /home/mahathi/mathur407_payload2/4.0.7: The configuration failed
+from /home/mahathi/mathur_payload2/zaspixhawkap: The configuration failed
 ----------------------------------------------
 Checking for HAVE_MEMRCHR
 ==>
@@ -1044,7 +1044,7 @@ Checking for HAVE_MEMRCHR
           return memrchr((const void *)s, 0, 3) != NULL;
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_8a6f6da927e76dcdb1be6499e9f068c6/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_a6938ca4465000aa77b1211122b72e72/test.cpp[0m
 
 ['/usr/lib/ccache/arm-none-eabi-g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-ffunction-sections', '-fdata-sections', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-missing-field-initializers', '-Wno-unused-parameter', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-trigraphs', '-Wno-format-contains-nul', '-Werror=shadow', '-Werror=return-type', '-Werror=unused-result', '-Werror=unused-variable', '-Werror=narrowing', '-Werror=attributes', '-Werror=overflow', '-Werror=parentheses', '-Werror=format-extra-args', '-Werror=ignored-qualifiers', '-mcpu=cortex-m7', '-mfpu=fpv5-d16', '-mfloat-abi=hard', '-DARM_MATH_CM7', '-u_printf_float', '-Wno-cast-align', '-Wlogical-op', '-Wframe-larger-than=1300', '-fsingle-precision-constant', '-Wno-attributes', '-Wno-error=double-promotion', '-Wno-error=missing-declarations', '-Wno-error=float-equal', '-Wno-error=undef', '-Wno-error=cpp', '-fno-exceptions', '-Wall', '-Wextra', '-Wno-sign-compare', '-Wfloat-equal', '-Wpointer-arith', '-Wmissing-declarations', '-Wno-unused-parameter', '-Werror=array-bounds', '-Wfatal-errors', '-Werror=uninitialized', '-Werror=init-self', '-Wframe-larger-than=1024', '-Werror=unused-but-set-variable', '-Wno-missing-field-initializers', '-Wno-trigraphs', '-fno-strict-aliasing', '-fomit-frame-pointer', '-falign-functions=16', '-ffunction-sections', '-fdata-sections', '-fno-strength-reduce', '-fno-builtin-printf', '-fno-builtin-fprintf', '-fno-builtin-vprintf', '-fno-builtin-vfprintf', '-fno-builtin-puts', '-mno-thumb-interwork', '-mthumb', '--specs=nano.specs', '-specs=nosys.specs', '-DCHIBIOS_BOARD_NAME="CUAVv5"', '-Werror=deprecated-declarations', '-fno-rtti', '-fno-threadsafe-statics', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-Wno-error=cast-align', '-DUAVCAN_STM32_CHIBIOS=1', '-DUAVCAN_STM32_NUM_IFACES=2', '-O2', '-I../../../../modules/uavcan/libuavcan/include', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_CHIBIOS', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DHAVE_STD_NULLPTR_T=0', '-DLUA_32BITS=1', '-DUSE_LIBC_REALLOC=0', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DUAVCAN_CPP_VERSION=UAVCAN_CPP03', '-DUAVCAN_NO_ASSERTIONS=1', '-DUAVCAN_NULLPTR=nullptr', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '-DNEED_CMATH_ISNAN_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
 err: ../../test.cpp: In function 'int main()':
@@ -1054,83 +1054,83 @@ err: ../../test.cpp: In function 'int main()':
       |                  memchr
 compilation terminated due to -Wfatal-errors.
 
-from /home/mahathi/mathur407_payload2/4.0.7: Test does not build: Traceback (most recent call last):
-  File "/home/mahathi/mathur407_payload2/4.0.7/modules/waf/waflib/Configure.py", line 584, in run_build
+from /home/mahathi/mathur_payload2/zaspixhawkap: Test does not build: Traceback (most recent call last):
+  File "/home/mahathi/mathur_payload2/zaspixhawkap/modules/waf/waflib/Configure.py", line 584, in run_build
     bld.compile()
-  File "/home/mahathi/mathur407_payload2/4.0.7/modules/waf/waflib/Build.py", line 355, in compile
+  File "/home/mahathi/mathur_payload2/zaspixhawkap/modules/waf/waflib/Build.py", line 355, in compile
     raise Errors.BuildError(self.producer.error)
-BuildError: Build failed
+waflib.Errors.BuildError: Build failed
  -> task in 'testprog' failed (exit status 1): 
-	{task 140513950351696: cxx test.cpp -> test.cpp.1.o}
+	{task 140669037884608: cxx test.cpp -> test.cpp.1.o}
  (run with -v to display more information)
 
 no
-from /home/mahathi/mathur407_payload2/4.0.7: The configuration failed
+from /home/mahathi/mathur_payload2/zaspixhawkap: The configuration failed
 ----------------------------------------------
 Checking for program 'python'
 /usr/bin/python
-find program=['python'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
+find program=['python'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
 ['/usr/bin/python', '-c', 'import imp;print(imp.get_tag())']
-err: Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-AttributeError: 'module' object has no attribute 'get_tag'
+out: cpython-310
+
+err: <string>:1: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
 
 ['/usr/bin/python', '-c', 'import sys\nfor x in sys.version_info: print(str(x))']
-out: 2
-7
-17
+out: 3
+10
+12
 final
 0
 
 ['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(standard_lib=0, prefix='/usr') or ''))"]
-out: '/usr/lib/python2.7/dist-packages'
+out: '/usr/lib/python3/dist-packages'
 
-'/usr/lib/python2.7/dist-packages'
+'/usr/lib/python3/dist-packages'
 
 ['/usr/bin/python', '-c', "from distutils.sysconfig import get_config_var, get_python_lib\n\nprint(repr(get_python_lib(plat_specific=1, standard_lib=0, prefix='/usr') or ''))"]
-out: '/usr/lib/python2.7/dist-packages'
+out: '/usr/lib/python3/dist-packages'
 
-'/usr/lib/python2.7/dist-packages'
+'/usr/lib/python3/dist-packages'
 
 ----------------------------------------------
 Checking for python version >= 2.7.0
-2.7.17
+3.10.12
 ----------------------------------------------
 Checking for program 'python'
 /usr/bin/python
-find program=['python'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
+find program=['python'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='PYTHON' -> ['/usr/bin/python']
 ['/usr/bin/python', '-c', 'import imp;print(imp.get_tag())']
-err: Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-AttributeError: 'module' object has no attribute 'get_tag'
+out: cpython-310
+
+err: <string>:1: DeprecationWarning: the imp module is deprecated in favour of importlib and slated for removal in Python 3.12; see the module's documentation for alternative uses
 
 ['/usr/bin/python', '-c', 'import sys\nfor x in sys.version_info: print(str(x))']
-out: 2
-7
-17
+out: 3
+10
+12
 final
 0
 
 ----------------------------------------------
 Checking for python version >= 2.7.0
-2.7.17
+3.10.12
 ----------------------------------------------
 Source is git repository
-no
+yes
 ----------------------------------------------
 Update submodules
-no
+yes
 ----------------------------------------------
 Checking for program 'git'
 /usr/bin/git
-find program=['git'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='GIT' -> ['/usr/bin/git']
+find program=['git'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='GIT' -> ['/usr/bin/git']
 ----------------------------------------------
 Gtest
 STM32 boards currently don't support compiling gtest
 ----------------------------------------------
 Checking for program 'arm-none-eabi-size'
 /opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-size
-find program=['arm-none-eabi-size'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='SIZE' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-size']
+find program=['arm-none-eabi-size'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='SIZE' -> ['/opt/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-size']
 ----------------------------------------------
 Benchmarks
 disabled
@@ -1146,4 +1146,4 @@ enabled
 ----------------------------------------------
 Checking for program 'rsync'
 /usr/bin/rsync
-find program=['rsync'] paths=['/usr/lib/ccache', '/home/mahathi/ardupilot_4_4_0/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='RSYNC' -> ['/usr/bin/rsync']
+find program=['rsync'] paths=['/home/mahathi/.vscode-server/bin/f1a4fb101478ce6ec82fe9627c43efbf9e98c813/bin/remote-cli', '/usr/lib/ccache', '/home/mahathi/zaspixhawkap/Tools/autotest', '/opt/gcc-arm-none-eabi-10-2020-q4-major/bin', '/home/mahathi/.local/bin', '/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/games', '/usr/local/games', '/usr/lib/wsl/lib', '/mnt/c/WINDOWS/system32', '/mnt/c/WINDOWS', '/mnt/c/WINDOWS/System32/Wbem', '/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/', '/mnt/c/WINDOWS/System32/OpenSSH/', '/mnt/c/Program Files/MATLAB/R2024b/runtime/win64', '/mnt/c/Program Files/MATLAB/R2024b/bin', '/mnt/c/Program Files/Git/cmd', '/mnt/c/Users/Mahathi/AppData/Local/Microsoft/WindowsApps', '/mnt/c/Users/Mahathi/AppData/Local/GitHubDesktop/bin', '/mnt/c/Users/Mahathi/AppData/Local/Programs/Microsoft VS Code/bin', '/snap/bin'] var='RSYNC' -> ['/usr/bin/rsync']
