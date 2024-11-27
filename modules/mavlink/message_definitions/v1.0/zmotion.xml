@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!-- ASLUAV Mavlink Message Definition File -->
+<!-- Used for the ASLUAV fixed-wing autopilot (www.asl.ethz.ch), which implements extensions to the Pixhawk (https://docs.px4.io/en/flight_controller/pixhawk.html) autopilot -->
+<mavlink>
+  <include>common.xml</include>
+  <dialect>2</dialect>
+  <enums>
+      
+    <enum name="ZMOTION_CUSTOM_CMD_TYPES">
+      <entry value="0" name="PAYLOAD2_COMMANDS">
+        <description>Commands sent are of Payload2 type</description>
+      </entry>
+      <entry value="1" name="ZMOTION_OTHERS">
+        <description>Other ZMOTION Commands</description>
+      </entry>
+    </enum>
+    <enum name="PAYLOAD2_CMD">
+      <entry value="0" name="PAYLOAD2_GET">
+        <description>Get Values</description>
+      </entry>
+      <entry value="1" name="PAYLOAD2_HEALTH_CHECK">
+        <description>Health Check</description>
+      </entry>
+      <entry value="2" name="PAYLOAD2_UNSED">
+        <description>UNUSED</description>
+      </entry>
+      <entry value="3" name="PAYLOAD2_ARM">
+        <description>ARM</description>
+      </entry>
+      <entry value="4" name="PAYLOAD2_DISARM">
+        <description>DISARM</description>
+      </entry>
+      <entry value="5" name="PAYLOAD2_TEST_CONFIGURATION">
+        <description>TEST CONFIGURATION</description>
+      </entry>
+    </enum>
+  </enums>
+  <messages>
+    <message id="58001" name="ZMOTION_COMMAND">
+      <description>Send a ZMotion command.</description>
+      <field type="uint8_t" name="zmotion_cmd_type" enum="ZMOTION_CUSTOM_CMD_TYPES">ZMotion Command Type</field>
+      <field type="uint8_t" name="actual_cmd">Actual Command</field>
+      <field type="uint16_t" name="seq_identifier">A unique identifier to associate the command with the response.</field>
+      <field type="uint32_t" name="custom_param1">Custom Param 1 for the command.</field>
+      <field type="uint32_t" name="custom_param2">Custom Param 2 for the command.</field>
+      <field type="uint32_t" name="custom_param3">Custom Param 3 for the command.</field>
+      <field type="uint32_t" name="custom_param4">Custom Param 4 for the command.</field>
+    </message>
+    <message id="58002" name="ZMOTION_COMMAND_RESPONSE">
+      <description>Response to a ZMotion command.</description>
+      <field type="uint8_t" name="zmotion_cmd_type" enum="ZMOTION_CUSTOM_CMD_TYPES">ZMotion Command Type</field>
+      <field type="uint8_t" name="actual_cmd">Actual Command</field>
+      <field type="uint16_t" name="seq_identifier">A unique identifier to associate the command with the response.</field>
+      <field type="uint32_t" name="response1">Response param 1.</field>
+      <field type="uint32_t" name="response2">Response param 2.</field>
+      <field type="uint32_t" name="response3">Response param 3.</field>
+      <field type="uint32_t" name="response4">Response param 4.</field>
+    </message>
+    <message id="58003" name="ZMOTION_PAYLOAD2_RESPONSE">
+      <description>Response to a ZMotion command.</description>
+      <field type="uint8_t" name="zmotion_cmd_type" enum="ZMOTION_CUSTOM_CMD_TYPES">ZMotion Command Type</field>
+      <field type="uint8_t" name="actual_cmd">Actual Command</field>
+      <field type="uint16_t" name="seq_identifier">A unique identifier to associate the command with the response.</field>
+      <field type="uint8_t" name="response1">Payload ID.</field>
+      <field type="uint8_t" name="response2">Response.</field>
+    </message>
+  </messages>
+</mavlink>
