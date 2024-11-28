@@ -74,13 +74,12 @@ void AP_Payload2_Control::get_uart_data() {
 void AP_Payload2_Control::tick(void) {
     uint32_t now = AP_HAL::millis();
 
-    if (now - _last_frame_ms > 1000) {
+    if (now - _last_frame_ms > 200) {
+        this->get_uart_data();
         _last_frame_ms = now;
     }
     if (_port == nullptr)
         return;
-
-    this->get_uart_data();
 }
 
 // singleton instance

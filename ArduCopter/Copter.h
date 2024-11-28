@@ -186,6 +186,7 @@
 #endif
 
 #include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
 
 #if CONFIG_HAL_BOARD == HAL_BOARD_SITL
 #include <SITL/SITL.h>
@@ -454,6 +455,9 @@ private:
 
     // Payload2 controls
     AP_Payload2_Control payload2_control;
+    // Mx28 gimbal control
+    AP_MX28_Control mx28_control;
+    
     // Battery Sensors
     AP_BattMonitor battery{MASK_LOG_CURRENT,
                            FUNCTOR_BIND_MEMBER(&Copter::handle_battery_failsafe, void, const char*, const int8_t),

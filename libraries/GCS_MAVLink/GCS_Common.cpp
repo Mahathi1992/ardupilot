@@ -582,6 +582,24 @@ void GCS_MAVLINK::handle_mount_message(const mavlink_message_t &msg)
     mount->handle_message(chan, msg);
 }
 
+void GCS_MAVLINK::handle_zas_gimbal_cmd_message(const mavlink_message_t &msg)
+{
+    AP_MX28_Control *zas_gimbal = AP::mx28_control();
+    if (zas_gimbal == nullptr) {
+        return;
+    }
+    zas_gimbal->handle_usr_cmd(chan, msg);
+}
+
+void GCS_MAVLINK::send_zas_gimbal_status() const
+{
+    AP_MX28_Control *zas_gimbal = AP::mx28_control();
+    if (zas_gimbal == nullptr) {
+        return;
+    }
+    zas_gimbal->send_zas_gimbal_status(chan);
+}
+
 /*
   pass parameter value messages through to mount library
  */
@@ -765,6 +783,7 @@ ap_message GCS_MAVLINK::mavlink_id_to_ap_message_id(const uint32_t mavlink_id) c
         { MAVLINK_MSG_ID_BATTERY2,              MSG_BATTERY2},
         { MAVLINK_MSG_ID_CAMERA_FEEDBACK,       MSG_CAMERA_FEEDBACK},
         { MAVLINK_MSG_ID_MOUNT_STATUS,          MSG_MOUNT_STATUS},
+        { MAVLINK_MSG_ID_ZAS_GIMBAL_STATUS_MSG, MSG_ZAS_GIMBAL_STATUS_MSG},
         { MAVLINK_MSG_ID_OPTICAL_FLOW,          MSG_OPTICAL_FLOW},
         { MAVLINK_MSG_ID_GIMBAL_REPORT,         MSG_GIMBAL_REPORT},
         { MAVLINK_MSG_ID_MAG_CAL_PROGRESS,      MSG_MAG_CAL_PROGRESS},
@@ -3175,6 +3194,14 @@ void GCS_MAVLINK::handle_common_message(const mavlink_message_t &msg)
         handle_mount_message(msg);
         break;
 
+    case MAVLINK_MSG_ID_ZAS_GIMBAL_ZOOM_CMD:
+    case MAVLINK_MSG_ID_ZAS_GIMBAL_USR_CMD:
+    case MAVLINK_MSG_ID_ZAS_GIMBAL_USR_CMD_PILOT_STAB:
+    case MAVLINK_MSG_ID_ZAS_GIMBAL_USR_CMD_GEOPOINT:
+        gcs().send_text(MAV_SEVERITY_INFO, "ZAS MSG SUCCESS! MSG_ID: %d", msg.msgid);
+        handle_zas_gimbal_cmd_message(msg);
+        break;
+
     case MAVLINK_MSG_ID_PARAM_VALUE:
         handle_param_value(msg);
         break;
@@ -4370,6 +4397,11 @@ bool GCS_MAVLINK::try_send_message(const enum ap_message id)
     case MSG_MOUNT_STATUS:
         CHECK_PAYLOAD_SIZE(MOUNT_STATUS);
         send_mount_status();
+        break;
+
+    case MSG_ZAS_GIMBAL_STATUS_MSG:
+        CHECK_PAYLOAD_SIZE(ZAS_GIMBAL_STATUS_MSG);
+        send_zas_gimbal_status();
         break;
 
     case MSG_OPTICAL_FLOW:

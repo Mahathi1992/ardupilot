@@ -502,7 +502,7 @@ void AP_Mount::update_fast()
 // get_mount_type - returns the type of mount
 AP_Mount::MountType AP_Mount::get_mount_type(uint8_t instance) const
 {
-    return Mount_Type_Servo;
+    // return Mount_Type_Servo;
     if (instance >= AP_MOUNT_MAX_INSTANCES) {
         return Mount_Type_None;
     }

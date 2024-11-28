@@ -16,6 +16,7 @@
 #include <AP_Devo_Telem/AP_Devo_Telem.h>
 #include <RC_Channel/RC_Channel.h>
 #include <AP_Filesystem/AP_Filesystem_Available.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
 
 #include "MissionItemProtocol_Waypoints.h"
 #include "MissionItemProtocol_Rally.h"
@@ -217,6 +218,7 @@ public:
     void send_sys_status();
     void send_set_position_target_global_int(uint8_t target_system, uint8_t target_component, const Location& loc);
     void send_rpm() const;
+    void send_zas_gimbal_status() const;
 
     bool locked() const;
 
@@ -346,6 +348,7 @@ protected:
     void handle_rally_fetch_point(const mavlink_message_t &msg);
     void handle_rally_point(const mavlink_message_t &msg);
     virtual void handle_mount_message(const mavlink_message_t &msg);
+    void handle_zas_gimbal_cmd_message(const mavlink_message_t &msg);
     void handle_fence_message(const mavlink_message_t &msg);
     void handle_param_value(const mavlink_message_t &msg);
     void handle_radio_status(const mavlink_message_t &msg, bool log_radio);

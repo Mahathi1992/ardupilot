@@ -137,6 +137,8 @@ void Copter::init_ardupilot()
 
     // Added by Akshay
     payload2_control.init();
+    // Added by Mahathi
+    mx28_control.init();
     
     // Do GPS init
     gps.set_log_gps_bit(MASK_LOG_GPS);
