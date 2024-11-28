@@ -32,40 +32,34 @@ void AP_Payload2_Control::init() {
     }
     //_port = nullptr;
 }
-#define ENABLE_STAGE1 1
-#define ENABLE_STAGE2 1
 
 void AP_Payload2_Control::get_uart_data() {
-    uint32_t avail = 0 ;
-#if ENABLE_STAGE1 
-    int16_t byteRead = -1;
-#endif    
+
+    uint8_t data;
+    int16_t numc;
     uint8_t isDataReady = 0;
 
+    numc = _port->available();
+
+    if (numc < 0 ){
+        return;
+    }
+   
     if (!isSerialInit){
         _port->begin(115200,128,128);
         _port->set_flow_control(AP_HAL::UARTDriver::FLOW_CONTROL_DISABLE);
         isSerialInit = true;
     }
-    //_port->write((const uint8_t*)"-A-" , 3);
-    isDataReady = 0;
-    do {
-#if ENABLE_STAGE1
-        do {
-            byteRead = _port->read();
-            if (byteRead != -1) {
-#if ENABLE_STAGE2
-                uint8_t val = (uint8_t) byteRead;
-                parser.buffer[parser.wb++] = val;
-                //_port->write( (const uint8_t *) &val, 1);
-                isDataReady = 1;
-#endif
-            }
-        } while (byteRead != -1);
 
-        avail = _port->available();
-#endif
-    } while (avail != 0);
+    if(numc>0){
+        for(int i=0;i<sizeof(numc);i++){
+            data = _port->read();
+            uint8_t val = data;
+            parser.buffer[parser.wb++] = val;
+        }
+        isDataReady = 1;
+    }
+    
     if (isDataReady){
         parser.stateMachine();
     }
