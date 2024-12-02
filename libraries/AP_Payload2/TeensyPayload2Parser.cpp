@@ -53,7 +53,7 @@ bool Teensy2Message::verify_checksum() {
     checksum = payload[6];
     checksum <<= 8;
     checksum += payload[7];
-    gcs().send_text(MAV_SEVERITY_INFO, "RCVC: %i, c: %i , ac: %i" , payload[5], chksum, checksum);
+    // gcs().send_text(MAV_SEVERITY_INFO, "RCVC: %i, c: %i , ac: %i" , payload[7], chksum, checksum);
     return (chksum == checksum);
 }
 
