@@ -13,8 +13,10 @@ void send_payload2_message() {
     response.seq_identifier = 0;
     response.zmotion_cmd_type = PAYLOAD2_COMMANDS;
     response.actual_cmd = PAYLOAD2_UNSED;
-    response.response1 = message.pid;
-    response.response2 = message.msg;
+    response.response1 = message.chassisID;
+    response.response2 = message.chassisHealth;
+    response.response3 = message.pid;
+    response.response4 = message.msg;
     
     
     GCS_MAVLINK *link = gcs().chan(0);
@@ -36,19 +38,21 @@ uint16_t Teensy2Message::checksum_payload() {
 void Teensy2Message::prepare_payload() {
     uint16_t chksum;
     payload[0] = header;
-    payload[1] = pid;
-    payload[2] = msg;
-    payload[3] = footer;
+    payload[1] = chassisID;
+    payload[2] = chassisHealth;
+    payload[3] = pid;
+    payload[4] = msg;
+    payload[5] = footer;
     chksum = checksum_payload();
-    payload[4] = chksum>>8;
-    payload[5] = chksum&0x00ff;
+    payload[6] = chksum>>8;
+    payload[7] = chksum&0x00ff;
 }
 
 bool Teensy2Message::verify_checksum() {
     uint16_t chksum = checksum_payload();
-    checksum = payload[4];
+    checksum = payload[6];
     checksum <<= 8;
-    checksum += payload[5];
+    checksum += payload[7];
     gcs().send_text(MAV_SEVERITY_INFO, "RCVC: %i, c: %i , ac: %i" , payload[5], chksum, checksum);
     return (chksum == checksum);
 }
@@ -71,38 +75,48 @@ void TeensyPayload2Parser::stateMachine() {
         switch (state) {
         case Teensy2MessageState_None:
             if (v == HEADER) {
-                gcs().send_text(MAV_SEVERITY_INFO, "RCVN: %i" , v);
-                state = Teensy2MessageState_Header;
+                gcs().send_text(MAV_SEVERITY_INFO, "Header: %i" , v);
+                state = Teensy2MessageState_CID;
                 incoming.header = HEADER;
             }
             break;
-        case Teensy2MessageState_Header:
-            incoming.pid = v;
+        case Teensy2MessageState_CID:
+            incoming.chassisID = v;
+            state = Teensy2MessageState_C_Health;
+            gcs().send_text(MAV_SEVERITY_INFO, "Chassis ID: %i" , v);
+            break;
+        case Teensy2MessageState_C_Health:
+            incoming.chassisHealth = v;
             state = Teensy2MessageState_PID;
-            gcs().send_text(MAV_SEVERITY_INFO, "RCVH: %i" , v);
+            gcs().send_text(MAV_SEVERITY_INFO, "Chassis Health: %i" , v);
             break;
         case Teensy2MessageState_PID:
-            incoming.msg = v;
+            incoming.pid = v;
             state = Teensy2MessageState_MSG;
-            gcs().send_text(MAV_SEVERITY_INFO, "RCVP: %i" , v);
+            gcs().send_text(MAV_SEVERITY_INFO, "Payload ID: %i" , v);
             break;
         case Teensy2MessageState_MSG:
-            incoming.footer = v;
-            if (v == FOOTER) {
-                state = Teensy2MessageState_Footer;
-                gcs().send_text(MAV_SEVERITY_INFO, "RCVM1: %i" , v);
-            } else {
-                state = Teensy2MessageState_None;
-                gcs().send_text(MAV_SEVERITY_INFO, "RCVM2: %i" , v);
-            }
+            incoming.msg = v;
+            state = Teensy2MessageState_Footer;
+            gcs().send_text(MAV_SEVERITY_INFO, "Payload MSG: %i" , v);
             break;
         case Teensy2MessageState_Footer:
-            incoming.payload[4] = v;
-            state = Teensy2MessageState_Checksum;
-            gcs().send_text(MAV_SEVERITY_INFO, "RCVF: %i" , v);
+            incoming.footer = v;
+            if (v == FOOTER) {
+                state = Teensy2MessageState_Checksum;
+                gcs().send_text(MAV_SEVERITY_INFO, "Footer: %i" , v);
+            } else {
+                state = Teensy2MessageState_None;
+                // gcs().send_text(MAV_SEVERITY_INFO, "RCVM2: %i" , v);
+            }
             break;
         case Teensy2MessageState_Checksum:
-            incoming.payload[5] = v;
+            incoming.payload[6] = v;
+            state = Teensy2MessageState_Checksum_Last;
+            // gcs().send_text(MAV_SEVERITY_INFO, "RCVF: %i" , v);
+            break;
+        case Teensy2MessageState_Checksum_Last:
+            incoming.payload[7] = v;
             if (incoming.verify_checksum()) {
                 // checksum matched. Do something
                 execute();

@@ -494,7 +494,7 @@ static void mavlink_test_zmotion_payload2_response(uint8_t system_id, uint8_t co
         uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
         uint16_t i;
     mavlink_zmotion_payload2_response_t packet_in = {
-        17235,139,206,17,84
+        17235,139,206,17,84,151,218
     };
     mavlink_zmotion_payload2_response_t packet1, packet2;
         memset(&packet1, 0, sizeof(packet1));
@@ -503,6 +503,8 @@ static void mavlink_test_zmotion_payload2_response(uint8_t system_id, uint8_t co
         packet1.actual_cmd = packet_in.actual_cmd;
         packet1.response1 = packet_in.response1;
         packet1.response2 = packet_in.response2;
+        packet1.response3 = packet_in.response3;
+        packet1.response4 = packet_in.response4;
         
         
 #ifdef MAVLINK_STATUS_FLAG_OUT_MAVLINK1
@@ -517,12 +519,12 @@ static void mavlink_test_zmotion_payload2_response(uint8_t system_id, uint8_t co
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_zmotion_payload2_response_pack(system_id, component_id, &msg , packet1.zmotion_cmd_type , packet1.actual_cmd , packet1.seq_identifier , packet1.response1 , packet1.response2 );
+    mavlink_msg_zmotion_payload2_response_pack(system_id, component_id, &msg , packet1.zmotion_cmd_type , packet1.actual_cmd , packet1.seq_identifier , packet1.response1 , packet1.response2 , packet1.response3 , packet1.response4 );
     mavlink_msg_zmotion_payload2_response_decode(&msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_zmotion_payload2_response_pack_chan(system_id, component_id, MAVLINK_COMM_0, &msg , packet1.zmotion_cmd_type , packet1.actual_cmd , packet1.seq_identifier , packet1.response1 , packet1.response2 );
+    mavlink_msg_zmotion_payload2_response_pack_chan(system_id, component_id, MAVLINK_COMM_0, &msg , packet1.zmotion_cmd_type , packet1.actual_cmd , packet1.seq_identifier , packet1.response1 , packet1.response2 , packet1.response3 , packet1.response4 );
     mavlink_msg_zmotion_payload2_response_decode(&msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 
@@ -535,7 +537,7 @@ static void mavlink_test_zmotion_payload2_response(uint8_t system_id, uint8_t co
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
         
         memset(&packet2, 0, sizeof(packet2));
-    mavlink_msg_zmotion_payload2_response_send(MAVLINK_COMM_1 , packet1.zmotion_cmd_type , packet1.actual_cmd , packet1.seq_identifier , packet1.response1 , packet1.response2 );
+    mavlink_msg_zmotion_payload2_response_send(MAVLINK_COMM_1 , packet1.zmotion_cmd_type , packet1.actual_cmd , packet1.seq_identifier , packet1.response1 , packet1.response2 , packet1.response3 , packet1.response4 );
     mavlink_msg_zmotion_payload2_response_decode(last_msg, &packet2);
         MAVLINK_ASSERT(memcmp(&packet1, &packet2, sizeof(packet1)) == 0);
 

@@ -71,6 +71,13 @@ void AP_Payload2_Control::tick(void) {
     if (now - _last_frame_ms > 200) {
         this->get_uart_data();
         _last_frame_ms = now;
+        static uint16_t counter = 0;
+        counter++;
+        if (counter > 100)
+        {
+            counter = 0;
+            gcs().send_text(MAV_SEVERITY_INFO, "Warhead ticking at 5Hz");
+        }
     }
     if (_port == nullptr)
         return;

@@ -158,8 +158,10 @@
       <field type="uint8_t" name="zmotion_cmd_type" enum="ZMOTION_CUSTOM_CMD_TYPES">ZMotion Command Type</field>
       <field type="uint8_t" name="actual_cmd">Actual Command</field>
       <field type="uint16_t" name="seq_identifier">A unique identifier to associate the command with the response.</field>
-      <field type="uint8_t" name="response1">Payload ID.</field>
-      <field type="uint8_t" name="response2">Response.</field>
+      <field type="uint8_t" name="response1">Chassis ID.</field>
+      <field type="uint8_t" name="response2">Chassis Health.</field>
+      <field type="uint8_t" name="response3">Payload ID.</field>
+      <field type="uint8_t" name="response4">Response.</field>
     </message>
   </messages>
 </mavlink>
