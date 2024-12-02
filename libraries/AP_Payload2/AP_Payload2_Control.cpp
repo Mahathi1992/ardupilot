@@ -65,6 +65,13 @@ void AP_Payload2_Control::get_uart_data() {
     }
 }
 
+void AP_Payload2_Control::send_warhead_status(mavlink_channel_t chan)
+{
+    Teensy2Message message = AP::payload2_control()->get_teensy_message();
+    mavlink_msg_zmotion_payload2_response_send(chan, PAYLOAD2_COMMANDS, PAYLOAD2_UNUSED, 0, message.chassisID, message.chassisHealth, message.pid, message.msg);
+    // GCS_SEND_TEXT(MAV_SEVERITY_INFO, "AP_Payload2: Warhead status being sent to GCS");
+}
+
 void AP_Payload2_Control::tick(void) {
     uint32_t now = AP_HAL::millis();
 

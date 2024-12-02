@@ -600,6 +600,15 @@ void GCS_MAVLINK::send_zas_gimbal_status() const
     zas_gimbal->send_zas_gimbal_status(chan);
 }
 
+void GCS_MAVLINK::send_warhead_status() const
+{
+    AP_Payload2_Control *zas_warhead = AP::payload2_control();
+    if (zas_warhead == nullptr) {
+        return;
+    }
+    zas_warhead->send_warhead_status(chan);
+}
+
 /*
   pass parameter value messages through to mount library
  */
@@ -784,6 +793,7 @@ ap_message GCS_MAVLINK::mavlink_id_to_ap_message_id(const uint32_t mavlink_id) c
         { MAVLINK_MSG_ID_CAMERA_FEEDBACK,       MSG_CAMERA_FEEDBACK},
         { MAVLINK_MSG_ID_MOUNT_STATUS,          MSG_MOUNT_STATUS},
         { MAVLINK_MSG_ID_ZAS_GIMBAL_STATUS_MSG, MSG_ZAS_GIMBAL_STATUS_MSG},
+        { MAVLINK_MSG_ID_ZMOTION_PAYLOAD2_RESPONSE, MSG_ZMOTION_PAYLOAD2_RESPONSE},
         { MAVLINK_MSG_ID_OPTICAL_FLOW,          MSG_OPTICAL_FLOW},
         { MAVLINK_MSG_ID_GIMBAL_REPORT,         MSG_GIMBAL_REPORT},
         { MAVLINK_MSG_ID_MAG_CAL_PROGRESS,      MSG_MAG_CAL_PROGRESS},
@@ -4264,6 +4274,7 @@ bool GCS_MAVLINK::try_send_message(const enum ap_message id)
     case MSG_ATTITUDE:
         CHECK_PAYLOAD_SIZE(ATTITUDE);
         send_attitude();
+        // GCS_SEND_TEXT(MAV_SEVERITY_INFO, "Attitude being sent to GCS");
         break;
 
     case MSG_NEXT_PARAM:
@@ -4274,6 +4285,7 @@ bool GCS_MAVLINK::try_send_message(const enum ap_message id)
     case MSG_GIMBAL_REPORT:
         CHECK_PAYLOAD_SIZE(GIMBAL_REPORT);
         send_gimbal_report();
+        // GCS_SEND_TEXT(MAV_SEVERITY_INFO,"Gimbal report being sent to GCS");
         break;
 
     case MSG_HEARTBEAT:
@@ -4397,11 +4409,19 @@ bool GCS_MAVLINK::try_send_message(const enum ap_message id)
     case MSG_MOUNT_STATUS:
         CHECK_PAYLOAD_SIZE(MOUNT_STATUS);
         send_mount_status();
+        // GCS_SEND_TEXT(MAV_SEVERITY_INFO,"MOUNT status being sent to GCS");
         break;
 
     case MSG_ZAS_GIMBAL_STATUS_MSG:
         CHECK_PAYLOAD_SIZE(ZAS_GIMBAL_STATUS_MSG);
         send_zas_gimbal_status();
+        // GCS_SEND_TEXT(MAV_SEVERITY_INFO,"ZAS gimbal status being sent to GCS");
+        break;
+
+    case MSG_ZMOTION_PAYLOAD2_RESPONSE:
+        CHECK_PAYLOAD_SIZE(ZMOTION_PAYLOAD2_RESPONSE);
+        send_warhead_status();
+        // GCS_SEND_TEXT(MAV_SEVERITY_INFO,"Warhead status being sent to GCS");
         break;
 
     case MSG_OPTICAL_FLOW:

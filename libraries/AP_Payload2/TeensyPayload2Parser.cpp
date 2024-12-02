@@ -12,7 +12,7 @@ void send_payload2_message() {
     
     response.seq_identifier = 0;
     response.zmotion_cmd_type = PAYLOAD2_COMMANDS;
-    response.actual_cmd = PAYLOAD2_UNSED;
+    response.actual_cmd = PAYLOAD2_UNUSED;
     response.response1 = message.chassisID;
     response.response2 = message.chassisHealth;
     response.response3 = message.pid;
@@ -22,11 +22,12 @@ void send_payload2_message() {
     GCS_MAVLINK *link = gcs().chan(0);
     if (link != nullptr){
         mavlink_msg_zmotion_payload2_response_send_struct(link->get_chan(), &response);
+        // gcs().send_text(MAV_SEVERITY_INFO, "RCVC: %i, c: %i , ac: %i");
     }
     
-    if (AP::payload2_control()->isChannelSet){
-        mavlink_msg_zmotion_payload2_response_send_struct(AP::payload2_control()->chan, &response);
-    }
+    // if (AP::payload2_control()->isChannelSet){
+    //     mavlink_msg_zmotion_payload2_response_send_struct(AP::payload2_control()->chan, &response);
+    // }
 }
 
 uint16_t Teensy2Message::checksum_payload() {

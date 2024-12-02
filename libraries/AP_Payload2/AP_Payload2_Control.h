@@ -28,6 +28,8 @@ public:
 
     Teensy2Message& get_teensy_message(){ return  parser.getTeensy2Message();}
 
+    void send_warhead_status(mavlink_channel_t chan);
+
 
 public:
 
@@ -36,7 +38,7 @@ public:
 
     AP_HAL::UARTDriver *_port;              // UART used to send data to receiver
     uint32_t _last_frame_ms;
-    mavlink_channel_t chan;
+    // mavlink_channel_t chan;
     bool isChannelSet;
     bool isSerialInit;
 

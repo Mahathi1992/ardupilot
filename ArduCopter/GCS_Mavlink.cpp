@@ -445,6 +445,8 @@ static const ap_message STREAM_EXTRA3_msgs[] = {
     MSG_BATTERY2,
     MSG_BATTERY_STATUS,
     MSG_MOUNT_STATUS,
+    MSG_ZAS_GIMBAL_STATUS_MSG,
+    MSG_ZMOTION_PAYLOAD2_RESPONSE,
     MSG_OPTICAL_FLOW,
     MSG_GIMBAL_REPORT,
     MSG_MAG_CAL_REPORT,
@@ -896,15 +898,15 @@ void GCS_MAVLINK_Copter::handleMessage(const mavlink_message_t &msg)
         // We keep track of the last time we received a heartbeat from our GCS for failsafe purposes
         if(msg.sysid != copter.g.sysid_my_gcs) break;
         copter.failsafe.last_heartbeat_ms = AP_HAL::millis();
-        if (!AP::payload2_control()->isChannelSet){
-            AP::payload2_control()->isChannelSet = true;
-            AP::payload2_control()->chan = chan;
-        } else {
-            if (AP::payload2_control()->chan != chan){
-                AP::payload2_control()->isChannelSet = true;
-                AP::payload2_control()->chan = chan;
-            }
-        }
+        // if (!AP::payload2_control()->isChannelSet){
+        //     AP::payload2_control()->isChannelSet = true;
+        //     AP::payload2_control()->chan = chan;
+        // } else {
+        //     if (AP::payload2_control()->chan != chan){
+        //         AP::payload2_control()->isChannelSet = true;
+        //         AP::payload2_control()->chan = chan;
+        //     }
+        // }
         break;
     }
 

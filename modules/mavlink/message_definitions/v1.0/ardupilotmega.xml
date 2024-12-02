@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="2.0"?>
 <mavlink>
   <include>common.xml</include>
   <!-- Vendors -->
@@ -7,10 +7,84 @@
   <!-- zmotion.xml range of IDs:
     messages: 58000 - 58049
   -->
-  <include>zmotion.xml</include>
+  <!-- <include>zmotion.xml</include> -->
   <dialect>2</dialect>
   <!-- Note that ArduPilot-specific messages should use the command id range from 150 to 250, to leave plenty of room for growth of common.xml If you prototype a message here, then you should consider if it is general enough to move into common.xml later -->
   <enums>
+    <!-- Camera Mount mode Enumeration for ZAS Gimbal -->
+    <enum name="ZAS_MOUNT_MODE">
+      <description>Enumeration of possible mount operation modes</description>
+      <entry value="0" name="ZAS_MOUNT_MODE_HOME">
+        <description> Load and keep HOME position </description>
+      </entry>
+      <entry value="1" name="ZAS_MOUNT_MODE_STABILIZE">
+        <description> Mode for ZAS gimbal stabilization.</description>
+      </entry>
+      <entry value="2" name="ZAS_MOUNT_MODE_GEOPOINT">
+        <description> Mode for ZAS gimbal geopointing with lat, lng, amsl. </description>
+      </entry>
+      <entry value="3" name="ZAS_MOUNT_MODE_PILOT">
+        <description> Pilot controlled ZAS gimbal mode. </description>
+      </entry>
+      <entry value="4" name="ZAS_MOUNT_MODE_STOW">
+        <description> Storage mode. </description>
+      </entry>
+      <entry value="5" name="ZAS_MOUNT_MODE_CALIBRATE">
+        <description> ZAS gimbal calibration mode. </description>
+      </entry>
+      <entry value="6" name="ZAS_MOUNT_MODE_HOME_TRACK">
+        <description> Gimbal tracks selected area in the image. </description>
+      </entry>
+      <entry value="7" name="ZAS_MOUNT_MODE_HOME_TRACK_LOCK">
+        <description> Gimbal tracks selected area in the image but locks pan and tilt.  </description>
+      </entry>
+      <entry value="200" name="ZAS_MOUNT_MODE_ZOOMRATE">
+        <description> Gimbal Zoomrate Mode.  </description>
+      </entry>
+      <entry value="201" name="ZAS_MOUNT_MODE_ZOOMPOS">
+        <description> Gimbal Zoom position dt change.  </description>
+      </entry>
+      <entry value="202" name="ZAS_MOUNT_MODE_TRACKBOX_NUDGE">
+        <description> Gimbal track box row, col.  </description>
+      </entry>
+      <entry value="203" name="ZAS_MOUNT_MODE_TRACKBOX_SIZE">
+        <description> Gimbal track box size.  </description>
+      </entry>
+      <entry value="204" name="ZAS_MOUNT_MODE_WHOT_BHOT">
+        <description> White hot / black hot status  </description>
+      </entry>
+      <entry value="250" name="ZAS_MOUNT_MODE_REBOOT">
+        <description> Gimbal Reboot </description>
+      </entry>
+    </enum>
+    <enum name="ZMOTION_CUSTOM_CMD_TYPES">
+      <entry value="0" name="PAYLOAD2_COMMANDS">
+        <description>Commands sent are of Payload2 type</description>
+      </entry>
+      <entry value="1" name="ZMOTION_OTHERS">
+        <description>Other ZMOTION Commands</description>
+      </entry>
+    </enum>
+    <enum name="PAYLOAD2_CMD">
+      <entry value="0" name="PAYLOAD2_GET">
+        <description>Get Values</description>
+      </entry>
+      <entry value="1" name="PAYLOAD2_HEALTH_CHECK">
+        <description>Health Check</description>
+      </entry>
+      <entry value="2" name="PAYLOAD2_UNUSED">
+        <description>UNUSED</description>
+      </entry>
+      <entry value="3" name="PAYLOAD2_ARM">
+        <description>ARM</description>
+      </entry>
+      <entry value="4" name="PAYLOAD2_DISARM">
+        <description>DISARM</description>
+      </entry>
+      <entry value="5" name="PAYLOAD2_TEST_CONFIGURATION">
+        <description>TEST CONFIGURATION</description>
+      </entry>
+    </enum>
     <enum name="ACCELCAL_VEHICLE_POS">
       <entry value="1" name="ACCELCAL_VEHICLE_POS_LEVEL"/>
       <entry value="2" name="ACCELCAL_VEHICLE_POS_LEFT"/>
@@ -1824,6 +1898,88 @@
         <field type="int16_t" name="dive_pitch_saturation" units="cdegs"> Pitch Saturation -10 to -80</field>
         <field type="int16_t" name="pitch_offset" units="cdegs"> Pitch Offser 0 to 45</field>
         <field type="uint16_t" name="target_heading" units="cdegs">Target Heading in centi degrees</field>
+    </message>
+    <message id="2371" name="ZAS_GIMBAL_ZOOM_CMD">
+        <description> ZAS custom message to send Camera Zoom to Gimbal </description>
+        <field type="int16_t" name="Zoom" units="x"> Zoom value </field>
+        <field type="int16_t" name="ZoomRate" units="x/s"> Zoom rate value </field> 
+        <field type="uint16_t" name="trk_x" units="pixels"> Tracking x pixel chosen by user via GCS cmd </field>
+        <field type="uint16_t" name="trk_y" units="pixels"> Tracking y pixel chosen by user via GCS cmd </field>
+        <field type="uint8_t" name="trk_cmd" units="uint8"> Command to track object in image plane </field>
+        <field type="int8_t" name="offset_x" units="pixels"> Offset pixels x </field>
+        <field type="int8_t" name="offset_y" units="pixels"> Offset pixels y </field>
+        <field type="int16_t" name="offset_box" units="int"> Box to offset from center </field> 
+        <field type="uint8_t" name="mode" enum="ZAS_MOUNT_MODE"> Gimbal mode for ZAS servo gimbal </field>
+    </message>
+    <message id="2372" name="ZAS_GIMBAL_USR_CMD">
+        <description> ZAS custom message to send user commands to servo gimbal. </description>
+        <field type="uint8_t" name="calib_stat" units="units"> calibration status for ZAS gimbal </field>
+        <field type="uint8_t" name="mode" enum="ZAS_MOUNT_MODE"> Gimbal mode for ZAS servo gimbal </field>
+    </message>
+    <message id="2373" name="ZAS_GIMBAL_USR_CMD_PILOT_STAB">
+        <description> ZAS custom message to send user commands to servo gimbal. </description>
+        <field type="float" name="yawrate" units="deg/s"> Gimbal yawrate cmd from GCS in deg/s </field>
+        <field type="float" name="pitchrate" units="deg/s"> Gimbal pitchrate cmd from GCS in deg/s </field>
+        <field type="float" name="rollrate" units="deg/s"> Gimbal rollrate cmd from GCSin deg/s </field>
+        <field type="float" name="pan" units="deg"> Pan demanded from user via GCS cmd in deg </field>
+        <field type="float" name="tilt" units="deg"> Tilt demanded from user via GCS cmd in deg </field>
+        <field type="uint8_t" name="calib_stat" units="units"> calibration status for ZAS gimbal </field>
+        <field type="uint8_t" name="submode"> Gimbal sub mode for ZAS servo gimbal in pilot or stabilize mode </field>
+        <field type="uint8_t" name="mode" enum="ZAS_MOUNT_MODE"> Gimbal mode for ZAS servo gimbal </field>
+    </message>
+    <message id="2374" name="ZAS_GIMBAL_USR_CMD_GEOPOINT">
+        <description> ZAS custom message to send user commands to servo gimbal. </description>
+        <field type="int32_t" name="target_latitude" units="degE7"> Target Latitude for gimbal tracking </field>
+        <field type="int32_t" name="target_longitude" units="degE7"> Target Longitude for gimbal tracking </field>
+        <field type="int32_t" name="target_altitude" units="m"> Target Altitude AMSL cm for gimbal tracking </field>
+        <field type="uint8_t" name="calib_stat" units="units"> calibration status for ZAS gimbal </field>
+        <field type="uint8_t" name="mode" enum="ZAS_MOUNT_MODE"> Gimbal mode for ZAS servo gimbal </field>
+    </message>
+    <message id="238" name="ZAS_GIMBAL_STATUS_MSG">
+        <description> ZAS custom message for receiving status from servo gimbal. </description>
+        <field type="int16_t" name="trk_x" units="pixels"> Tracking x pixel (current) </field>
+        <field type="int16_t" name="trk_y" units="pixels"> Tracking y pixel (current) </field>
+        <field type="float" name="cmd_pan" units="deg"> Commanded pan status </field>
+        <field type="float" name="cmd_tilt" units="deg"> Commanded tilt status </field>
+        <field type="float" name="pan" units="deg"> Current pan status in deg </field>
+        <field type="float" name="tilt" units="deg"> Current tilt status in deg </field>
+        <field type="float" name="elevation" units="deg"> Current elevation in global frame status in deg </field>
+        <field type="float" name="azimuth" units="deg"> Current azimuth in global frame status in deg </field>
+        <field type="uint8_t" name="Zoom" units="x"> Zoom value </field>
+        <field type="uint8_t" name="wb_mode" units="x"> white hot/black hot </field>
+        <field type="uint8_t" name="mode" enum="ZAS_MOUNT_MODE"> Gimbal mode for ZAS servo gimbal </field>
+        <field type="uint8_t" name="cam_type" units="x"> Camera type value </field>
+        <field type="uint8_t" name="trk_status" units="uint8"> Tracker status </field>
+    </message>
+    <message id="58001" name="ZMOTION_COMMAND">
+      <description>Send a ZMotion command.</description>
+      <field type="uint8_t" name="zmotion_cmd_type" enum="ZMOTION_CUSTOM_CMD_TYPES">ZMotion Command Type</field>
+      <field type="uint8_t" name="actual_cmd">Actual Command</field>
+      <field type="uint16_t" name="seq_identifier">A unique identifier to associate the command with the response.</field>
+      <field type="uint32_t" name="custom_param1">Custom Param 1 for the command.</field>
+      <field type="uint32_t" name="custom_param2">Custom Param 2 for the command.</field>
+      <field type="uint32_t" name="custom_param3">Custom Param 3 for the command.</field>
+      <field type="uint32_t" name="custom_param4">Custom Param 4 for the command.</field>
+    </message>
+    <message id="58002" name="ZMOTION_COMMAND_RESPONSE">
+      <description>Response to a ZMotion command.</description>
+      <field type="uint8_t" name="zmotion_cmd_type" enum="ZMOTION_CUSTOM_CMD_TYPES">ZMotion Command Type</field>
+      <field type="uint8_t" name="actual_cmd">Actual Command</field>
+      <field type="uint16_t" name="seq_identifier">A unique identifier to associate the command with the response.</field>
+      <field type="uint32_t" name="response1">Response param 1.</field>
+      <field type="uint32_t" name="response2">Response param 2.</field>
+      <field type="uint32_t" name="response3">Response param 3.</field>
+      <field type="uint32_t" name="response4">Response param 4.</field>
+    </message>
+    <message id="58003" name="ZMOTION_PAYLOAD2_RESPONSE">
+      <description>Response to a ZMotion command.</description>
+      <field type="uint8_t" name="zmotion_cmd_type" enum="ZMOTION_CUSTOM_CMD_TYPES">ZMotion Command Type</field>
+      <field type="uint8_t" name="actual_cmd">Actual Command</field>
+      <field type="uint16_t" name="seq_identifier">A unique identifier to associate the command with the response.</field>
+      <field type="uint8_t" name="response1">Chassis ID.</field>
+      <field type="uint8_t" name="response2">Chassis Health.</field>
+      <field type="uint8_t" name="response3">Payload ID.</field>
+      <field type="uint8_t" name="response4">Response.</field>
     </message>
   </messages>
 </mavlink>

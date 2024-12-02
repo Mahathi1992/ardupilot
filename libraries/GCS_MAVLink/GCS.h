@@ -17,6 +17,7 @@
 #include <RC_Channel/RC_Channel.h>
 #include <AP_Filesystem/AP_Filesystem_Available.h>
 #include <AP_MX28_Gimbal/AP_MX28_Control.h>
+#include <AP_Payload2/AP_Payload2_Control.h>
 
 #include "MissionItemProtocol_Waypoints.h"
 #include "MissionItemProtocol_Rally.h"
@@ -219,6 +220,7 @@ public:
     void send_set_position_target_global_int(uint8_t target_system, uint8_t target_component, const Location& loc);
     void send_rpm() const;
     void send_zas_gimbal_status() const;
+    void send_warhead_status() const;
 
     bool locked() const;
 

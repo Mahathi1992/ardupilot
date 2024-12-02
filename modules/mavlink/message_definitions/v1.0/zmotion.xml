@@ -66,7 +66,7 @@
       <entry value="1" name="PAYLOAD2_HEALTH_CHECK">
         <description>Health Check</description>
       </entry>
-      <entry value="2" name="PAYLOAD2_UNSED">
+      <entry value="2" name="PAYLOAD2_UNUSED">
         <description>UNUSED</description>
       </entry>
       <entry value="3" name="PAYLOAD2_ARM">

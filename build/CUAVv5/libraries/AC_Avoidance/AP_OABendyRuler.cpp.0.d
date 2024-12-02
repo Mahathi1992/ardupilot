@@ -244,6 +244,14 @@ libraries/AC_Avoidance/AP_OABendyRuler.cpp.0.o: \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_track_status.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_track_parameters.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_gpsd_parameters.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_gimbal_zoom_cmd.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_gimbal_usr_cmd.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_gimbal_usr_cmd_pilot_stab.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_gimbal_usr_cmd_geopoint.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zas_gimbal_status_msg.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zmotion_command.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zmotion_command_response.h \
+ libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/./mavlink_msg_zmotion_payload2_response.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../common/common.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../common/./mavlink_msg_sys_status.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../common/./mavlink_msg_system_time.h \
@@ -441,15 +449,6 @@ libraries/AC_Avoidance/AP_OABendyRuler.cpp.0.o: \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../icarous/icarous.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../icarous/./mavlink_msg_icarous_heartbeat.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../icarous/./mavlink_msg_icarous_kinematic_bands.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/zmotion.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zas_gimbal_zoom_cmd.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zas_gimbal_usr_cmd.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zas_gimbal_usr_cmd_pilot_stab.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zas_gimbal_usr_cmd_geopoint.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zas_gimbal_status_msg.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zmotion_command.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zmotion_command_response.h \
- libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../zmotion/./mavlink_msg_zmotion_payload2_response.h \
  libraries/GCS_MAVLink/include/mavlink/v2.0/ardupilotmega/../mavlink_get_info.h \
  ../../libraries/AC_Fence/AC_Fence.h ../../libraries/GCS_MAVLink/GCS.h \
  ../../libraries/AP_Mission/AP_Mission.h \
@@ -467,6 +466,8 @@ libraries/AC_Avoidance/AP_OABendyRuler.cpp.0.o: \
  ../../libraries/RC_Channel/RC_Channel.h \
  ../../libraries/AP_Filesystem/AP_Filesystem_Available.h \
  ../../libraries/AP_MX28_Gimbal/AP_MX28_Control.h \
+ ../../libraries/AP_Payload2/AP_Payload2_Control.h \
+ ../../libraries/AP_Payload2/TeensyPayload2Parser.h \
  ../../libraries/GCS_MAVLink/MissionItemProtocol_Waypoints.h \
  ../../libraries/GCS_MAVLink/MissionItemProtocol.h \
  ../../libraries/GCS_MAVLink/ap_message.h \
