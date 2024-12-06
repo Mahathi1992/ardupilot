@@ -22,7 +22,7 @@
 
 // definitions
 #define AP_MISSION_EEPROM_VERSION           0x65AE  // version number stored in first four bytes of eeprom.  increment this by one when eeprom format is changed
-#define AP_MISSION_EEPROM_COMMAND_SIZE      15      // size in bytes of all mission commands
+#define AP_MISSION_EEPROM_COMMAND_SIZE      16      // size in bytes of all mission commands
 
 #define AP_MISSION_MAX_NUM_DO_JUMP_COMMANDS 15      // allow up to 15 do-jump commands
 
