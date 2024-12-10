@@ -10,7 +10,7 @@ jobs:
     runs-on: 'windows-latest'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: 'recursive'
       - uses: cygwin/cygwin-install-action@master
@@ -37,7 +37,7 @@ jobs:
           allow_failure: true
 
       - name: Archive build
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
            name: binaries
            path: artifacts
