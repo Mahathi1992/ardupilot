@@ -69,6 +69,8 @@
 #include <AP_Follow/AP_Follow.h>
 #include <AP_OSD/AP_OSD.h>
 #include <AP_WindVane/AP_WindVane.h>
+#include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
 
 #ifdef ENABLE_SCRIPTING
 #include <AP_Scripting/AP_Scripting.h>
@@ -255,6 +257,11 @@ private:
 
     // flyforward timer
     uint32_t flyforward_start_ms;
+
+    // Payload2 controls
+    AP_Payload2_Control payload2_control;
+    // Mx28 gimbal control
+    AP_MX28_Control mx28_control;
 
     static const AP_Scheduler::Task scheduler_tasks[];
 

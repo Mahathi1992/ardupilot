@@ -6,4 +6,4 @@
 #error ap_version.h should never be included directly. You probably want to include AP_Common/AP_FWVersion.h
 #endif
 
-#define GIT_VERSION "09fd6ff2"
+#define GIT_VERSION "5159365f"

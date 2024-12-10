@@ -26,6 +26,8 @@ def build(bld):
             'AP_Follow',
             'AP_OSD',
             'AP_WindVane',
+            'AP_MX28_Gimbal',
+            'AP_Payload2'
         ],
     )
 

@@ -52,7 +52,7 @@ void AP_Payload2_Control::get_uart_data() {
     }
 
     if(numc>0){
-        for(int i=0;i<sizeof(numc);i++){
+        for(uint16_t i=0;i<sizeof(numc);i++){
             data = _port->read();
             uint8_t val = data;
             parser.buffer[parser.wb++] = val;

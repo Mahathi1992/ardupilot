@@ -85,6 +85,9 @@
 #include <AP_Landing/AP_Landing.h>
 #include <AP_LandingGear/AP_LandingGear.h>     // Landing Gear library
 
+#include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
+
 #include "GCS_Mavlink.h"
 #include "GCS_Plane.h"
 #include "quadplane.h"
@@ -250,6 +253,11 @@ private:
     // are we doing calibration? This is used to allow heartbeat to
     // external failsafe boards during baro and airspeed calibration
     bool in_calibration;
+
+    // Payload2 controls
+    AP_Payload2_Control payload2_control;
+    // Mx28 gimbal control
+    AP_MX28_Control mx28_control;
 
     // GCS selection
     GCS_Plane _gcs; // avoid using this; use gcs()

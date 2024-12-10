@@ -8,6 +8,9 @@ extern void send_zas_default_parameters();
 extern void set_zas_gpsd_parameters(mavlink_channel_t channel, mavlink_zas_gpsd_parameters_t *gpsdive_msg);
 extern void handle_gimbal_control_servo(float pan_yaw, float tilt_pitch);
 
+#include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
+
 MAV_TYPE GCS_Plane::frame_type() const
 {
     return plane.quadplane.get_mav_type();

@@ -1,6 +1,8 @@
 #include "Rover.h"
 
 #include "GCS_Mavlink.h"
+#include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
 
 #include <AP_RangeFinder/RangeFinder_Backend.h>
 

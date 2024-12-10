@@ -57,6 +57,8 @@
 #include <AP_OpticalFlow/AP_OpticalFlow.h>
 #include <AP_Beacon/AP_Beacon.h>
 #include <AP_Common/AP_FWVersion.h>
+#include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
 
 // Configuration
 #include "config.h"
@@ -181,6 +183,11 @@ private:
 
     // true if the compass's initial location has been set
     bool compass_init_location;
+
+    // Payload2 controls
+    AP_Payload2_Control payload2_control;
+    // Mx28 gimbal control
+    AP_MX28_Control mx28_control;
 
     // AntennaTracker.cpp
     void one_second_loop();

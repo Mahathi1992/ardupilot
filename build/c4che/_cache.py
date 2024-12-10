@@ -1,6 +1,6 @@
 AUTOCONFIG = True
 BINDIR = '/usr/bin'
-BOARD = 'CUAVv5'
+BOARD = 'sitl'
 DEBUG = False
 LIBDIR = '/usr/lib'
 PREFIX = '/usr'
