@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # script to build cygwin binaries for using in MissionPlanner
 # the contents of artifacts directory is uploaded to:
@@ -18,10 +18,11 @@ $GPP_COMPILER -print-sysroot
 SYS_ROOT=$($GPP_COMPILER -print-sysroot)
 echo "SYS_ROOT=$SYS_ROOT"
 
-git config --global --add safe.directory /cygdrive/d/a/ardupilot/ardupilot
-
 rm -rf artifacts
 mkdir artifacts
+
+# cygwin doesn't work out the parallelism properly
+WAF_OPTIONS="-j8"
 
 (
     python ./waf --color yes --toolchain $TOOLCHAIN --board sitl configure 2>&1
