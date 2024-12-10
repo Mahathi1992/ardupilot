@@ -1,4 +1,4 @@
-# project  configured on Tue Dec 10 18:47:53 2024 by
+# project  configured on Tue Dec 10 19:28:44 2024 by
 # waf 2.0.9 (abi 20, python 30a0cf0 on linux)
 # using /home/mahathi/win_sitl/zaspixhawkap/modules/waf/waf-light configure --board SITL
 #
@@ -770,7 +770,7 @@ Checking for c flags '-MMD'
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_d82fed7cab5b9bed6a89c338b89798ba/test.c[0m
+[1/1] Compiling [32mbuild/.conf_check_3becf141436f7345be3d93fe40bb8110/test.c[0m
 
 ['/usr/lib/ccache/gcc', '-MMD', '-DWAF_BUILD=1', '../../test.c', '-c', '-otest.c.1.o']
 yes
@@ -779,7 +779,7 @@ Checking for cxx flags '-MMD'
 ==>
 int main() { return 0; }
 <==
-[1/1] Compiling [32mbuild/.conf_check_2d073bd40a7b2cd350580b6f48c6b1d9/test.cpp[0m
+[1/1] Compiling [32mbuild/.conf_check_ea4ffc2cc1ec5f13fc526476226a960e/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-MMD', '-DWAF_BUILD=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
 yes
@@ -793,10 +793,10 @@ Checking for need to link with librt
             clock_gettime(CLOCK_REALTIME, NULL);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_2409be30d69dda7aba3a33641aa9df9b/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_70df88e7170cbacf303a6dbb3c791606/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-MMD', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_2409be30d69dda7aba3a33641aa9df9b/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_70df88e7170cbacf303a6dbb3c791606/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 not necessary
@@ -810,10 +810,10 @@ Checking for feenableexcept
             return feenableexcept(FE_OVERFLOW | FE_DIVBYZERO);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_39e1a3497eeb2c94686617b27fb66caa/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_3b30886d896a4e303c5b371fe622020c/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-MMD', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_39e1a3497eeb2c94686617b27fb66caa/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_3b30886d896a4e303c5b371fe622020c/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic']
 yes
@@ -827,10 +827,10 @@ Checking for HAVE_CMATH_ISFINITE
           return std::isfinite(1.0f);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_765ef6e31d80fa8205c32c6eb04cd163/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_425a366d9398c2b36d48adb66fe7873d/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_765ef6e31d80fa8205c32c6eb04cd163/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_425a366d9398c2b36d48adb66fe7873d/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -844,10 +844,10 @@ Checking for HAVE_CMATH_ISINF
           return std::isinf(1.0f);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_972ab551f400815c6a02f3cbff497cd6/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_5ac1c6c895be8ff213b3ab50a9084ccb/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_972ab551f400815c6a02f3cbff497cd6/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_5ac1c6c895be8ff213b3ab50a9084ccb/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -861,10 +861,10 @@ Checking for HAVE_CMATH_ISNAN
           return std::isnan(1.0f);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_03f7a8cb972b19069d28ea6d33264554/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_6ccc470442e5919a7eecce574d3b8155/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_03f7a8cb972b19069d28ea6d33264554/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_6ccc470442e5919a7eecce574d3b8155/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -881,10 +881,10 @@ Checking for NEED_CMATH_ISFINITE_STD_NAMESPACE
           return isfinite((double)1);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_04c7daa7eebcd2df431f7cbfc545c2e7/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_46917f23874b9adad7888c018b6957ec/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_04c7daa7eebcd2df431f7cbfc545c2e7/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_46917f23874b9adad7888c018b6957ec/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -901,10 +901,10 @@ Checking for NEED_CMATH_ISINF_STD_NAMESPACE
           return isinf((double)1);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_f1a52ff6a0429c9146d3a338999927cb/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_9804f641d1f3f79c35eb8f93a984c270/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_f1a52ff6a0429c9146d3a338999927cb/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_9804f641d1f3f79c35eb8f93a984c270/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -921,10 +921,10 @@ Checking for NEED_CMATH_ISNAN_STD_NAMESPACE
           return isnan((double)1);
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_5d4869d827243df319187884a31eb77c/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_89fd347516bbca14e4802933afcbf636/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_5d4869d827243df319187884a31eb77c/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_89fd347516bbca14e4802933afcbf636/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -939,10 +939,10 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_b239050e411b8337aa161330cffb4131/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_3fa18783e89119802e4b899fa2b4cd7c/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '-DNEED_CMATH_ISNAN_STD_NAMESPACE=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_b239050e411b8337aa161330cffb4131/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_3fa18783e89119802e4b899fa2b4cd7c/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -957,10 +957,10 @@ int main(int argc, char **argv) {
 }
 
 <==
-[1/2] Compiling [32mbuild/.conf_check_f1eb5929ed2ee9246dc6b200beb20e5d/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_157e751c1fe0b29c9e57bdd6594ad092/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '-DNEED_CMATH_ISNAN_STD_NAMESPACE=1', '-DHAVE_ENDIAN_H=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_f1eb5929ed2ee9246dc6b200beb20e5d/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_157e751c1fe0b29c9e57bdd6594ad092/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
@@ -974,10 +974,10 @@ Checking for HAVE_MEMRCHR
           return memrchr((const void *)s, 0, 3) != NULL;
         }
 <==
-[1/2] Compiling [32mbuild/.conf_check_337d14d1e8ca13b0846d8dd0cc0e9ce5/test.cpp[0m
+[1/2] Compiling [32mbuild/.conf_check_98d8f10b40cd5214f84d8d77dc9e5c4e/test.cpp[0m
 
 ['/usr/lib/ccache/g++', '-std=gnu++11', '-fdata-sections', '-ffunction-sections', '-fno-exceptions', '-fsigned-char', '-Wall', '-Wextra', '-Wformat', '-Wpointer-arith', '-Wcast-align', '-Wundef', '-Wno-unused-parameter', '-Wno-missing-field-initializers', '-Wno-reorder', '-Wno-redundant-decls', '-Wno-unknown-pragmas', '-Wno-expansion-to-defined', '-Wno-format-contains-nul', '-Werror=attributes', '-Werror=format-security', '-Werror=format-extra-args', '-Werror=enum-compare', '-Werror=array-bounds', '-Werror=uninitialized', '-Werror=init-self', '-Werror=narrowing', '-Werror=return-type', '-Werror=switch', '-Werror=sign-compare', '-Werror=type-limits', '-Werror=unused-result', '-Werror=shadow', '-Werror=unused-variable', '-Werror=delete-non-virtual-dtor', '-Wfatal-errors', '-Wno-trigraphs', '-Werror=parentheses', '-Werror=unused-but-set-variable', '-Werror=suggest-override', '-Werror=float-equal', '-O3', '-DHAL_HAVE_AP_ROMFS_EMBEDDED_H', '-MMD', '-DAP_SCRIPTING_CHECKS=1', '-DCONFIG_HAL_BOARD=HAL_BOARD_SITL', '-DCONFIG_HAL_BOARD_SUBTYPE=HAL_BOARD_SUBTYPE_NONE', '-DENABLE_HEAP=1', '-DENABLE_SCRIPTING=1', '-DLUA_32BITS=1', '-DWAF_BUILD=1', '-D__STDC_FORMAT_MACROS=1', '-DHAVE_FEENABLEEXCEPT=1', '-DHAVE_CMATH_ISFINITE=1', '-DHAVE_CMATH_ISINF=1', '-DHAVE_CMATH_ISNAN=1', '-DNEED_CMATH_ISFINITE_STD_NAMESPACE=1', '-DNEED_CMATH_ISINF_STD_NAMESPACE=1', '-DNEED_CMATH_ISNAN_STD_NAMESPACE=1', '-DHAVE_ENDIAN_H=1', '-DHAVE_BYTESWAP_H=1', '../../test.cpp', '-c', '-otest.cpp.1.o']
-[2/2] Linking [33mbuild/.conf_check_337d14d1e8ca13b0846d8dd0cc0e9ce5/testbuild/sitl/testprog[0m
+[2/2] Linking [33mbuild/.conf_check_98d8f10b40cd5214f84d8d77dc9e5c4e/testbuild/sitl/testprog[0m
 
 ['/usr/lib/ccache/g++', '-Wl,--gc-sections', '-pthread', 'test.cpp.1.o', '-otestprog', '-Wl,-Bstatic', '-Wl,-Bdynamic', '-lm']
 yes
