@@ -2,6 +2,9 @@
 
 #include "GCS_Mavlink.h"
 
+#include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
+
 /*
  *  !!NOTE!!
  *

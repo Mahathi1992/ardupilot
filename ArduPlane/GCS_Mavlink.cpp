@@ -1410,18 +1410,18 @@ void GCS_MAVLINK_Plane::handleMessage(const mavlink_message_t &msg)
     
 /* Added by Akash - To control camera Zoom */
     case MAVLINK_MSG_ID_CAMERA_SETTINGS:
-        mavlink_camera_settings_t packet;
-        mavlink_msg_camera_settings_decode(&msg, &packet);
-        //gcs().send_text(MAV_SEVERITY_CRITICAL, "camera Mode %d", packet.mode_id);
-        gcs().send_text(MAV_SEVERITY_CRITICAL, "Zoom AP %f, Mode: %d,ID: %f, pcd: %d", packet.zoomLevel, packet.mode_id, packet.focusLevel, prev_camera_mode);
-        //gcs().send_text(MAV_SEVERITY_CRITICAL, "Camera ID %f", packet.focusLevel);
-        if((packet.mode_id == 1) && (prev_camera_mode == packet.mode_id))
-            plane.eocamera_control.set_zoom(packet.focusLevel,packet.zoomLevel);
-        else if((packet.mode_id == 2) && (prev_camera_mode == packet.mode_id))
-            plane.ircamera_control.set_zoom(packet.focusLevel,packet.zoomLevel);
+        // mavlink_camera_settings_t packet;
+        // mavlink_msg_camera_settings_decode(&msg, &packet);
+        // //gcs().send_text(MAV_SEVERITY_CRITICAL, "camera Mode %d", packet.mode_id);
+        // gcs().send_text(MAV_SEVERITY_CRITICAL, "Zoom AP %f, Mode: %d,ID: %f, pcd: %d", packet.zoomLevel, packet.mode_id, packet.focusLevel, prev_camera_mode);
+        // //gcs().send_text(MAV_SEVERITY_CRITICAL, "Camera ID %f", packet.focusLevel);
+        // if((packet.mode_id == 1) && (prev_camera_mode == packet.mode_id))
+        //     plane.eocamera_control.set_zoom(packet.focusLevel,packet.zoomLevel);
+        // else if((packet.mode_id == 2) && (prev_camera_mode == packet.mode_id))
+        //     plane.ircamera_control.set_zoom(packet.focusLevel,packet.zoomLevel);
 
-        prev_camera_mode = packet.mode_id;
-        set_camera_mode(packet.mode_id);
+        // prev_camera_mode = packet.mode_id;
+        // set_camera_mode(packet.mode_id);
         break;
  /* End by Akash - To control Camera Zoom */
  

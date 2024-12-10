@@ -460,9 +460,6 @@ ArduPlane/radio.cpp.28.o: ../../ArduPlane/radio.cpp ap_config.h \
  ../../ArduPlane/tuning.h ../../libraries/AP_Tuning/AP_Tuning.h \
  ../../ArduPlane/config.h ../../ArduPlane/defines.h \
  ../../ArduPlane/afs_plane.h ../../ArduPlane/mode.h \
- ../../libraries/AP_Scripting/AP_Scripting.h \
- ../../libraries/AP_EOCamera_Control/AP_EOCamera_Control.h \
- ../../libraries/AP_IRCamera_Control/AP_IRCamera_Control.h \
- ../../ArduPlane/RC_Channel.h ../../ArduPlane/Parameters.h \
- ../../ArduPlane/avoidance_adsb.h \
+ ../../libraries/AP_Scripting/AP_Scripting.h ../../ArduPlane/RC_Channel.h \
+ ../../ArduPlane/Parameters.h ../../ArduPlane/avoidance_adsb.h \
  ../../libraries/AP_Avoidance/AP_Avoidance.h ../../ArduPlane/AP_Arming.h

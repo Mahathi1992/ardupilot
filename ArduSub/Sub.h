@@ -73,6 +73,8 @@
 #include <AP_LeakDetector/AP_LeakDetector.h> // Leak detector
 #include <AP_TemperatureSensor/TSYS01.h>
 #include <AP_Common/AP_FWVersion.h>
+#include <AP_Payload2/AP_Payload2_Control.h>
+#include <AP_MX28_Gimbal/AP_MX28_Control.h>
 
 // Local modules
 #include "defines.h"
@@ -289,6 +291,11 @@ private:
 
     // Circle
     bool circle_pilot_yaw_override; // true if pilot is overriding yaw
+
+    // Payload2 controls
+    AP_Payload2_Control payload2_control;
+    // Mx28 gimbal control
+    AP_MX28_Control mx28_control;
 
     // Stores initial bearing when armed
     int32_t initial_armed_bearing;

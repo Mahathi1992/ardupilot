@@ -110,8 +110,8 @@
 
 
  /* Added by Akash - To control camera Zoom */
- #include <AP_EOCamera_Control/AP_EOCamera_Control.h>
- #include <AP_IRCamera_Control/AP_IRCamera_Control.h>
+//  #include <AP_EOCamera_Control/AP_EOCamera_Control.h>
+//  #include <AP_IRCamera_Control/AP_IRCamera_Control.h>
  /* End by Akash - To control Camera Zoom */
 
 #include "RC_Channel.h"     // RC Channel Library
@@ -428,8 +428,8 @@ private:
 
     
 /* Added by Akash - To control camera Zoom */
-    AP_EOCamera_Control eocamera_control;
-    AP_IRCamera_Control ircamera_control;
+    // AP_EOCamera_Control eocamera_control;
+    // AP_IRCamera_Control ircamera_control;
  /* End by Akash - To control Camera Zoom */
     
     // ACRO controller state

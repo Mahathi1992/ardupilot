@@ -143,8 +143,8 @@ void Plane::init_ardupilot()
 #endif
 
 /* Added by Akash - To control camera Zoom */
-    eocamera_control.init();
-    ircamera_control.init();
+    // eocamera_control.init();
+    // ircamera_control.init();
  /* End by Akash - To control Camera Zoom */
     /*
      *  setup the 'main loop is dead' check. Note that this relies on
@@ -300,7 +300,7 @@ bool Plane::set_mode(Mode &new_mode, const ModeReason reason)
     // exit previous mode
     old_mode.exit();
 
-    eocamera_control.update_control_mode(control_mode->mode_number());
+    // eocamera_control.update_control_mode(control_mode->mode_number());
     // record reasons
     previous_mode_reason = control_mode_reason;
     control_mode_reason = reason;
