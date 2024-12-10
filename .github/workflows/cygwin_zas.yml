@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
       - uses: cygwin/cygwin-install-action@master
         with:
           packages: cygwin64 gcc-g++=10.2.0-1 python37 python37-future python37-lxml python37-pip python37-setuptools python37-wheel git procps gettext
