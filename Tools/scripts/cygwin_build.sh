@@ -8,8 +8,8 @@
 
 set -x
 
-TOOLCHAIN=i686-pc-cygwin
-# TOOLCHAIN=x86_64-pc-cygwin
+# TOOLCHAIN=i686-pc-cygwin
+TOOLCHAIN=x86_64-pc-cygwin
 GPP_COMPILER="${TOOLCHAIN}-g++"
 
 $GPP_COMPILER -print-sysroot
