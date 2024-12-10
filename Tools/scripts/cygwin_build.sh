@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 TOOLCHAIN=x86_64-pc-cygwin
 GPP_COMPILER="${TOOLCHAIN}-g++"
 $GPP_COMPILER -print-sysroot
