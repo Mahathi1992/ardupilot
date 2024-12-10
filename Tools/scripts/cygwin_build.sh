@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # script to build cygwin binaries for using in MissionPlanner
 # the contents of artifacts directory is uploaded to:
@@ -7,6 +7,7 @@
 # the script assumes you start in the root of the ardupilot git tree
 
 set -x
+set -e
 
 # TOOLCHAIN=i686-pc-cygwin
 TOOLCHAIN=x86_64-pc-cygwin
