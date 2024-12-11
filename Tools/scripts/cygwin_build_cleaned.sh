@@ -1,12 +1,15 @@
 #!/bin/bash
-
 TOOLCHAIN=x86_64-pc-cygwin
 GPP_COMPILER="${TOOLCHAIN}-g++"
 $GPP_COMPILER -print-sysroot
+
 SYS_ROOT=$($GPP_COMPILER -print-sysroot)
 echo "SYS_ROOT=$SYS_ROOT"
+
 git config --global --add safe.directory /cygdrive/d/a/ardupilot/ardupilot
+
 rm -rf artifacts
+
 mkdir artifacts
 (
     python ./waf --color yes --toolchain $TOOLCHAIN --board sitl configure 2>&1
