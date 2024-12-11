@@ -1,8 +1,7 @@
 #!/bin/bash
 TOOLCHAIN=x86_64-pc-cygwin
-GPP_COMPILER="${TOOLCHAIN}-g++"
+GPP_COMPILER="{$TOOLCHAIN}-g++"
 $GPP_COMPILER -print-sysroot
-
 SYS_ROOT=$($GPP_COMPILER -print-sysroot)
 echo "SYS_ROOT=$SYS_ROOT"
 
