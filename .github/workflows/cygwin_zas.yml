@@ -20,6 +20,7 @@ jobs:
           bash --login -c "ln -sf /usr/bin/python3.7 /usr/bin/python && ln -sf /usr/bin/pip3.7 /usr/bin/pip"
           bash --login -c "python -m pip install empy==3.3.4 pexpect"
           bash --login -c "python -m pip install dronecan --upgrade"
+          bash --login -c "tr -d "\r" < Tools/scripts/cygwin_build_mahathi.sh > Tools/scripts/cygwin_build_clean.sh"
       - name: Build SITL
         env:
           HOME: ${{ runner.workspace }}/ardupilot
