@@ -1,13 +1,5 @@
 #!/bin/bash
-
-# script to build cygwin binaries for using in MissionPlanner
-# the contents of artifacts directory is uploaded to:
-# https://firmware.ardupilot.org/Tools/MissionPlanner/sitl/
-
-# the script assumes you start in the root of the ardupilot git tree
-
 set -x
-
 git config --global --add safe.directory /cygdrive/d/a/ardupilot/ardupilot
 
 rm -rf artifacts
