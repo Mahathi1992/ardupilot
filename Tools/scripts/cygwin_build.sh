@@ -16,7 +16,7 @@ rm -rf artifacts
 mkdir artifacts
 
 (
-  python ./waf --color yes --toolchain i686-pc-cygwin --board sitl configure 2>&1
+  python ./waf --color yes --toolchain x86_64-pc-cygwin --board sitl configure 2>&1
   python ./waf plane 2>&1
   python ./waf copter 2>&1
 ) | tee artifacts/build.txt
