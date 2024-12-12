@@ -25,6 +25,7 @@ jobs:
         env:
           HOME: ${{ runner.workspace }}/ardupilot
         run: |
+          bash --login -c "dos2unix Tools/scripts/cygwin_build.sh"
           bash --login -c "Tools/scripts/cygwin_build.sh"
       - name: Check build files
         id: check_files
