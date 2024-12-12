@@ -1,10 +1,8 @@
 #!/bin/bash
 set -x
 git config --global --add safe.directory /cygdrive/d/a/ardupilot/ardupilot
-
 rm -rf artifacts
 mkdir artifacts
-
 (
     python ./waf --color yes --toolchain i686-pc-cygwin --board sitl configure 2>&1
     python ./waf plane 2>&1
