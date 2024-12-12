@@ -1361,25 +1361,25 @@ void GCS_MAVLINK_Plane::handleMessage(const mavlink_message_t &msg)
     }
 
     
-    case MAVLINK_MSG_ID_ZAS_TRACK3D_PARAMETERS:
-    {
+    // case MAVLINK_MSG_ID_ZAS_TRACK3D_PARAMETERS:
+    // {
         
-        //hal.serial(2)->printf("Got Track3D parameters\n");
-        mavlink_zas_track3d_parameters_t track3d_msg;
-        mavlink_msg_zas_track3d_parameters_decode(&msg, &track3d_msg);
-        // Now I can set them
-        set_zas_track3d_parameters(&track3d_msg);
-	gcs().send_text(MAV_SEVERITY_WARNING, "Parameters: ALat: %li, ALon: %li, DAlt: %i, Dpitch %i, Dairspeed %i\r\n",
-            track3d_msg.approach_latitude ,track3d_msg.approach_longitude ,track3d_msg.abort_dive_altitude ,
-            track3d_msg.dive_pitch ,track3d_msg.dive_airspeed);
-        /*
-        hal.serial(2)->printf("Parameters: ALat: %li, ALon: %li, DAlt: %i, Dpitch %i, Dairspeed %i\r\n",
-            track3d_msg.approach_latitude ,track3d_msg.approach_longitude ,track3d_msg.abort_dive_altitude ,
-            track3d_msg.dive_pitch ,track3d_msg.dive_airspeed
-        );
-        */
-    }
-        break;
+    //     //hal.serial(2)->printf("Got Track3D parameters\n");
+    //     mavlink_zas_track3d_parameters_t track3d_msg;
+    //     mavlink_msg_zas_track3d_parameters_decode(&msg, &track3d_msg);
+    //     // Now I can set them
+    //     set_zas_track3d_parameters(&track3d_msg);
+	// gcs().send_text(MAV_SEVERITY_WARNING, "Parameters: ALat: %li, ALon: %li, DAlt: %i, Dpitch %i, Dairspeed %i\r\n",
+    //         track3d_msg.approach_latitude ,track3d_msg.approach_longitude ,track3d_msg.abort_dive_altitude ,
+    //         track3d_msg.dive_pitch ,track3d_msg.dive_airspeed);
+    //     /*
+    //     hal.serial(2)->printf("Parameters: ALat: %li, ALon: %li, DAlt: %i, Dpitch %i, Dairspeed %i\r\n",
+    //         track3d_msg.approach_latitude ,track3d_msg.approach_longitude ,track3d_msg.abort_dive_altitude ,
+    //         track3d_msg.dive_pitch ,track3d_msg.dive_airspeed
+    //     );
+    //     */
+    // }
+    //     break;
     
     // case MAVLINK_MSG_ID_ZAS_TRACK_PARAMETERS:
     // {
