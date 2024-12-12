@@ -1425,17 +1425,17 @@ void GCS_MAVLINK_Plane::handleMessage(const mavlink_message_t &msg)
         break;
  /* End by Akash - To control Camera Zoom */
  
-    case MAVLINK_MSG_ID_POWER_12V:
-    {
-            //gcs().send_text(MAV_SEVERITY_NOTICE, "tilt ");
-            mavlink_power_12v_t packet_12v;
-            mavlink_msg_power_12v_decode(&msg, &packet_12v);
+    // case MAVLINK_MSG_ID_POWER_12V:
+    // {
+    //         //gcs().send_text(MAV_SEVERITY_NOTICE, "tilt ");
+    //         mavlink_power_12v_t packet_12v;
+    //         mavlink_msg_power_12v_decode(&msg, &packet_12v);
             
-            handle_power12v_set(&msg);
-            handle_gimbal_control_servo(packet_12v.Yaw, packet_12v.Pitch);
-            gcs().send_text(MAV_SEVERITY_CRITICAL, "OFF272 P: %f, Tilt: %f",packet_12v.Yaw, packet_12v.Pitch);
-    }
-            break;
+    //         handle_power12v_set(&msg);
+    //         handle_gimbal_control_servo(packet_12v.Yaw, packet_12v.Pitch);
+    //         gcs().send_text(MAV_SEVERITY_CRITICAL, "OFF272 P: %f, Tilt: %f",packet_12v.Yaw, packet_12v.Pitch);
+    // }
+    //         break;
             
     case MAVLINK_MSG_ID_ADSB_VEHICLE:
     case MAVLINK_MSG_ID_UAVIONIX_ADSB_OUT_CFG:
