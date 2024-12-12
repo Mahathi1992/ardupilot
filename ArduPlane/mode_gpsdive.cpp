@@ -27,7 +27,8 @@ Location approachWp(APPROACH_WP), targetWp(APPROACH_WP), abortWp(APPROACH_WP);
 ModeGPSDive *trackGpsdObj = nullptr;
 static SimpleMovingAverage<5, int32_t, int32_t> sma;
 static bool isTargetValid = false;
-static uint16_t approach_loiter_radius = 0, abort_dive_altitude = ABORT_DIVE_ALTITUDE;
+static uint16_t approach_loiter_radius = 0;
+//  abort_dive_altitude = ABORT_DIVE_ALTITUDE;
 
 // void send_zas_gpsd_parameters(mavlink_channel_t channel);
 // void set_zas_gpsd_parameters(mavlink_channel_t channel, mavlink_zas_gpsd_parameters_t *gpsdive_msg);

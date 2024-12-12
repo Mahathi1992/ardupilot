@@ -96,7 +96,7 @@ Mode *Plane::mode_from_mode_num(const enum Mode::Number num)
         break;
         
     case Mode::Number::GPSDIVE:
-        ret = &mode_gpsdive;
+        // ret = &mode_gpsdive;
         break;
         
     case Mode::Number::VBTG:

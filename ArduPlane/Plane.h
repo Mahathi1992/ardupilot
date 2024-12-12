@@ -312,7 +312,7 @@ private:
     ModeTrack3D mode_track3d;
     ModeTrack2D mode_track2d;
     ModeGimabalNav mode_gimbalnav;
-    ModeGPSDive mode_gpsdive;
+    // ModeGPSDive mode_gpsdive;
     ModeVBGT mode_vbgt;
 
     // This is the state of the flight control system

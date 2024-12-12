@@ -459,11 +459,11 @@ void Plane::calc_throttle()
         commanded_throttle = plane.guided_state.forced_throttle;
     }
     
-    if (control_mode == &mode_gpsdive){
-        if (mode_gpsdive.isPlaneInDive()){
-            commanded_throttle = plane.guided_state.forced_throttle;
-        }
-    }
+    // if (control_mode == &mode_gpsdive){
+    //     if (mode_gpsdive.isPlaneInDive()){
+    //         commanded_throttle = plane.guided_state.forced_throttle;
+    //     }
+    // }
 
     SRV_Channels::set_output_scaled(SRV_Channel::k_throttle, commanded_throttle);
 }
@@ -577,14 +577,14 @@ void Plane::calc_nav_pitch()
         commanded_pitch = plane.guided_state.forced_rpy_cd.y;
     }
 
-    if (control_mode == &mode_gpsdive){
-        if (mode_gpsdive.isPlaneInDive()){
-            commanded_pitch = plane.guided_state.forced_rpy_cd.y;
-            nav_pitch_cd = commanded_pitch;
-            pitch_limit_min_cd = mode_gpsdive.dive_pitch_saturation;
-            return;
-        }
-    }
+    // if (control_mode == &mode_gpsdive){
+    //     if (mode_gpsdive.isPlaneInDive()){
+    //         commanded_pitch = plane.guided_state.forced_rpy_cd.y;
+    //         nav_pitch_cd = commanded_pitch;
+    //         pitch_limit_min_cd = mode_gpsdive.dive_pitch_saturation;
+    //         return;
+    //     }
+    // }
 
     nav_pitch_cd = constrain_int32(commanded_pitch, pitch_limit_min_cd, aparm.pitch_limit_max_cd.get());
 }

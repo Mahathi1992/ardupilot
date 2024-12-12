@@ -394,7 +394,7 @@ void Plane::update_GPS_10Hz(void)
     }
 
     calc_gndspeed_undershoot();
-    GCS_MAVLINK *link = gcs().chan(0);
+    // GCS_MAVLINK *link = gcs().chan(0);
     // if (link != nullptr){
     //     send_zas_track_status_10Hz(link->get_chan());
     // }

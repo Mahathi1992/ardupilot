@@ -19,7 +19,7 @@
 #undef FORCE_VERSION_H_INCLUDE
 
 const AP_HAL::HAL& hal = AP_HAL::get_HAL();
-extern ModeGPSDive *trackGpsdObj;
+// extern ModeGPSDive *trackGpsdObj;
 
 /*
   constructor for main Plane class
@@ -29,7 +29,7 @@ Plane::Plane(void)
 {
     // C++11 doesn't allow in-class initialisation of bitfields
     auto_state.takeoff_complete = true;
-    trackGpsdObj = &mode_gpsdive;
+    // trackGpsdObj = &mode_gpsdive;
 }
 
 Plane plane;
