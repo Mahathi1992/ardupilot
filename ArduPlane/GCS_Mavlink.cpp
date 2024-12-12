@@ -2,11 +2,11 @@
 
 #include "Plane.h"
 
-extern void set_zas_track3d_parameters( mavlink_zas_track3d_parameters_t *track3d_msg);
-extern void set_zas_track_parameters(mavlink_zas_track_parameters_t *params);
-extern void send_zas_default_parameters();
-extern void set_zas_gpsd_parameters(mavlink_channel_t channel, mavlink_zas_gpsd_parameters_t *gpsdive_msg);
-extern void handle_gimbal_control_servo(float pan_yaw, float tilt_pitch);
+// extern void set_zas_track3d_parameters( mavlink_zas_track3d_parameters_t *track3d_msg);
+// extern void set_zas_track_parameters(mavlink_zas_track_parameters_t *params);
+// extern void send_zas_default_parameters();
+// extern void set_zas_gpsd_parameters(mavlink_channel_t channel, mavlink_zas_gpsd_parameters_t *gpsdive_msg);
+// extern void handle_gimbal_control_servo(float pan_yaw, float tilt_pitch);
 
 #include <AP_Payload2/AP_Payload2_Control.h>
 #include <AP_MX28_Gimbal/AP_MX28_Control.h>
@@ -1381,32 +1381,32 @@ void GCS_MAVLINK_Plane::handleMessage(const mavlink_message_t &msg)
     }
         break;
     
-    case MAVLINK_MSG_ID_ZAS_TRACK_PARAMETERS:
-    {
-        mavlink_zas_track_parameters_t track_msg;
-        mavlink_msg_zas_track_parameters_decode(&msg, &track_msg);
-        // Now I can set them
-        /*
-        hal.serial(2)->printf("Got Track parameters\n");
-        hal.serial(2)->printf("Parameters: Max misses: %li, Step Value: %li, Confidence Threshold: %i, Center Offset: %i, Cam0 W: %i, H: %i, Cam1 W: %i, Cam1 H: %i \n",
-            track_msg.max_misses_before_tracking_lost, track_msg.step_value , track_msg.confidence_threshold , track_msg.center_offset_pixel_delta , 
-            track_msg.cam0_height, track_msg.cam0_width, track_msg.cam1_height, track_msg.cam1_width
-        );
-        */
-        if (track_msg.confidence_threshold != 1000){
-            set_zas_track_parameters(&track_msg);
-        } else {
-            send_zas_default_parameters();
-        }
-    }
-        break;
-    case MAVLINK_MSG_ID_ZAS_GPSD_PARAMETERS:
-    {
-        mavlink_zas_gpsd_parameters_t gpsdive_msg;
-        mavlink_msg_zas_gpsd_parameters_decode(&msg, &gpsdive_msg);
-        set_zas_gpsd_parameters(get_chan(), &gpsdive_msg);
-    }
-    break;
+    // case MAVLINK_MSG_ID_ZAS_TRACK_PARAMETERS:
+    // {
+    //     mavlink_zas_track_parameters_t track_msg;
+    //     mavlink_msg_zas_track_parameters_decode(&msg, &track_msg);
+    //     // Now I can set them
+    //     /*
+    //     hal.serial(2)->printf("Got Track parameters\n");
+    //     hal.serial(2)->printf("Parameters: Max misses: %li, Step Value: %li, Confidence Threshold: %i, Center Offset: %i, Cam0 W: %i, H: %i, Cam1 W: %i, Cam1 H: %i \n",
+    //         track_msg.max_misses_before_tracking_lost, track_msg.step_value , track_msg.confidence_threshold , track_msg.center_offset_pixel_delta , 
+    //         track_msg.cam0_height, track_msg.cam0_width, track_msg.cam1_height, track_msg.cam1_width
+    //     );
+    //     */
+    //     if (track_msg.confidence_threshold != 1000){
+    //         set_zas_track_parameters(&track_msg);
+    //     } else {
+    //         send_zas_default_parameters();
+    //     }
+    // }
+    //     break;
+    // case MAVLINK_MSG_ID_ZAS_GPSD_PARAMETERS:
+    // {
+    //     mavlink_zas_gpsd_parameters_t gpsdive_msg;
+    //     mavlink_msg_zas_gpsd_parameters_decode(&msg, &gpsdive_msg);
+    //     set_zas_gpsd_parameters(get_chan(), &gpsdive_msg);
+    // }
+    // break;
     
 /* Added by Akash - To control camera Zoom */
     case MAVLINK_MSG_ID_CAMERA_SETTINGS:

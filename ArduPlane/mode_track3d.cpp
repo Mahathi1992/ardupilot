@@ -33,18 +33,18 @@ void set_zas_track3d_parameters(mavlink_zas_track3d_parameters_t *track3d_msg){
     }
 }
 
-void send_zas_track3d_parameters(mavlink_channel_t channel){
-    mavlink_zas_track3d_parameters_t packet;
-    packet.approach_latitude = wp1Loc.lat;
-    packet.approach_longitude = wp1Loc.lng;
-    packet.abort_dive_altitude = dive_airspeed;
-    packet.dive_pitch = FORCED_PITCH_TRACK3D_DIVE_ANGLE;
-    packet.dive_airspeed = abort_dive_altitude;
-    if (track3DObject != nullptr){
-        packet.dive_pitch = track3DObject->forced_pitch_angle;
-    }
-    mavlink_msg_zas_track3d_parameters_send_struct(channel, &packet);
-}
+// void send_zas_track3d_parameters(mavlink_channel_t channel){
+//     mavlink_zas_track3d_parameters_t packet;
+//     packet.approach_latitude = wp1Loc.lat;
+//     packet.approach_longitude = wp1Loc.lng;
+//     packet.abort_dive_altitude = dive_airspeed;
+//     packet.dive_pitch = FORCED_PITCH_TRACK3D_DIVE_ANGLE;
+//     packet.dive_airspeed = abort_dive_altitude;
+//     if (track3DObject != nullptr){
+//         packet.dive_pitch = track3DObject->forced_pitch_angle;
+//     }
+//     mavlink_msg_zas_track3d_parameters_send_struct(channel, &packet);
+// }
 
 bool ModeTrack3D::_enter()
 {

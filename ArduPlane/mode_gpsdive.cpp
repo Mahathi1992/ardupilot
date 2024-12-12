@@ -29,8 +29,8 @@ static SimpleMovingAverage<5, int32_t, int32_t> sma;
 static bool isTargetValid = false;
 static uint16_t approach_loiter_radius = 0, abort_dive_altitude = ABORT_DIVE_ALTITUDE;
 
-void send_zas_gpsd_parameters(mavlink_channel_t channel);
-void set_zas_gpsd_parameters(mavlink_channel_t channel, mavlink_zas_gpsd_parameters_t *gpsdive_msg);
+// void send_zas_gpsd_parameters(mavlink_channel_t channel);
+// void set_zas_gpsd_parameters(mavlink_channel_t channel, mavlink_zas_gpsd_parameters_t *gpsdive_msg);
 void checkIfTargetIsValid();
 double shiftCalculatedHeadingToNorthAs0(double heading);
 
@@ -42,85 +42,85 @@ void checkIfTargetIsValid(){
     isTargetValid = true;
 }
 
-void set_zas_gpsd_parameters(mavlink_channel_t channel,mavlink_zas_gpsd_parameters_t *gpsdive_msg){
+// void set_zas_gpsd_parameters(mavlink_channel_t channel,mavlink_zas_gpsd_parameters_t *gpsdive_msg){
     
-    if (gpsdive_msg->loiter_direction == 100){
-        send_zas_gpsd_parameters(channel);
-        return;
-    }
+//     if (gpsdive_msg->loiter_direction == 100){
+//         send_zas_gpsd_parameters(channel);
+//         return;
+//     }
     
-    approachWp.lng = gpsdive_msg->approach_longitude;
-    approachWp.lat = gpsdive_msg->approach_latitude;
-    approachWp.alt = gpsdive_msg->approach_altitude;
+//     approachWp.lng = gpsdive_msg->approach_longitude;
+//     approachWp.lat = gpsdive_msg->approach_latitude;
+//     approachWp.alt = gpsdive_msg->approach_altitude;
     
-    targetWp.lng = gpsdive_msg->target_longitude;
-    targetWp.lat = gpsdive_msg->target_latitude;
-    targetWp.alt = gpsdive_msg->target_altitude;
+//     targetWp.lng = gpsdive_msg->target_longitude;
+//     targetWp.lat = gpsdive_msg->target_latitude;
+//     targetWp.alt = gpsdive_msg->target_altitude;
     
-    abortWp.lng = gpsdive_msg->abort_longitude;
-    abortWp.lat = gpsdive_msg->abort_latitude;
-    abortWp.alt = gpsdive_msg->abort_altitude;
+//     abortWp.lng = gpsdive_msg->abort_longitude;
+//     abortWp.lat = gpsdive_msg->abort_latitude;
+//     abortWp.alt = gpsdive_msg->abort_altitude;
     
     
-    if (trackGpsdObj != nullptr){
-        trackGpsdObj->target_heading = gpsdive_msg->target_heading;
-        trackGpsdObj->loiter_direction = gpsdive_msg->loiter_direction;
-        trackGpsdObj->dive_pitch_saturation = gpsdive_msg->dive_pitch_saturation;
-        trackGpsdObj->pitch_offset = gpsdive_msg->pitch_offset;
-        if (trackGpsdObj->loiter_direction == 0){
-            approachWp.loiter_ccw = 0;
-            targetWp.loiter_ccw = 0;
-            abortWp.loiter_ccw = 0;
-        } else {
-            approachWp.loiter_ccw = 1;
-            targetWp.loiter_ccw = 1;
-            abortWp.loiter_ccw = 1;
-        }
-        trackGpsdObj->target_heading += 180;
-        trackGpsdObj->target_heading *= 100;
-        trackGpsdObj->target_heading = wrap_360_cd(trackGpsdObj->target_heading);
-        trackGpsdObj->target_heading /= 100;
-    }
-    approach_loiter_radius = gpsdive_msg->approach_loiter_radius;
-    abort_dive_altitude = gpsdive_msg->abort_dive_altitude;
-    checkIfTargetIsValid();
-    gcs().send_text(MAV_SEVERITY_INFO, "Approach Alt is %li cms; lat: %li lon: %li", approachWp.alt,approachWp.lat,approachWp.lng);
-    gcs().send_text(MAV_SEVERITY_INFO, "Target Alt is %li cms; lat: %li lon: %li", targetWp.alt,targetWp.lat,targetWp.lng);
-    gcs().send_text(MAV_SEVERITY_INFO, "Abort Alt is %li cms; lat: %li lon: %li", abortWp.alt,abortWp.lat,abortWp.lng);
+//     if (trackGpsdObj != nullptr){
+//         trackGpsdObj->target_heading = gpsdive_msg->target_heading;
+//         trackGpsdObj->loiter_direction = gpsdive_msg->loiter_direction;
+//         trackGpsdObj->dive_pitch_saturation = gpsdive_msg->dive_pitch_saturation;
+//         trackGpsdObj->pitch_offset = gpsdive_msg->pitch_offset;
+//         if (trackGpsdObj->loiter_direction == 0){
+//             approachWp.loiter_ccw = 0;
+//             targetWp.loiter_ccw = 0;
+//             abortWp.loiter_ccw = 0;
+//         } else {
+//             approachWp.loiter_ccw = 1;
+//             targetWp.loiter_ccw = 1;
+//             abortWp.loiter_ccw = 1;
+//         }
+//         trackGpsdObj->target_heading += 180;
+//         trackGpsdObj->target_heading *= 100;
+//         trackGpsdObj->target_heading = wrap_360_cd(trackGpsdObj->target_heading);
+//         trackGpsdObj->target_heading /= 100;
+//     }
+//     approach_loiter_radius = gpsdive_msg->approach_loiter_radius;
+//     abort_dive_altitude = gpsdive_msg->abort_dive_altitude;
+//     checkIfTargetIsValid();
+//     gcs().send_text(MAV_SEVERITY_INFO, "Approach Alt is %li cms; lat: %li lon: %li", approachWp.alt,approachWp.lat,approachWp.lng);
+//     gcs().send_text(MAV_SEVERITY_INFO, "Target Alt is %li cms; lat: %li lon: %li", targetWp.alt,targetWp.lat,targetWp.lng);
+//     gcs().send_text(MAV_SEVERITY_INFO, "Abort Alt is %li cms; lat: %li lon: %li", abortWp.alt,abortWp.lat,abortWp.lng);
     
-    gcs().send_text(MAV_SEVERITY_INFO, "T. Head is %i cdegs; L. dir.: %i; D.P.S.: %i", gpsdive_msg->target_heading,gpsdive_msg->loiter_direction,gpsdive_msg->dive_pitch_saturation);
-    gcs().send_text(MAV_SEVERITY_INFO, "Pitch. Off.: %i cdegs; App. LR: %i; Abort DA: %i", gpsdive_msg->pitch_offset, approach_loiter_radius, abort_dive_altitude) ;
-}
+//     gcs().send_text(MAV_SEVERITY_INFO, "T. Head is %i cdegs; L. dir.: %i; D.P.S.: %i", gpsdive_msg->target_heading,gpsdive_msg->loiter_direction,gpsdive_msg->dive_pitch_saturation);
+//     gcs().send_text(MAV_SEVERITY_INFO, "Pitch. Off.: %i cdegs; App. LR: %i; Abort DA: %i", gpsdive_msg->pitch_offset, approach_loiter_radius, abort_dive_altitude) ;
+// }
 
-void send_zas_gpsd_parameters(mavlink_channel_t channel){
-    mavlink_zas_gpsd_parameters_t packet;
-    packet.approach_latitude = approachWp.lat;
-    packet.approach_longitude = approachWp.lng;
-    packet.approach_altitude = approachWp.alt;
+// void send_zas_gpsd_parameters(mavlink_channel_t channel){
+//     mavlink_zas_gpsd_parameters_t packet;
+//     packet.approach_latitude = approachWp.lat;
+//     packet.approach_longitude = approachWp.lng;
+//     packet.approach_altitude = approachWp.alt;
     
-    packet.target_latitude = targetWp.lat;
-    packet.target_longitude = targetWp.lng;
-    packet.target_altitude = targetWp.alt;
+//     packet.target_latitude = targetWp.lat;
+//     packet.target_longitude = targetWp.lng;
+//     packet.target_altitude = targetWp.alt;
     
-    packet.abort_latitude = abortWp.lat;
-    packet.abort_longitude = abortWp.lng;
-    packet.abort_altitude = abortWp.alt;
+//     packet.abort_latitude = abortWp.lat;
+//     packet.abort_longitude = abortWp.lng;
+//     packet.abort_altitude = abortWp.alt;
     
-    packet.approach_loiter_radius = approach_loiter_radius;
-    packet.abort_dive_altitude = abort_dive_altitude;
+//     packet.approach_loiter_radius = approach_loiter_radius;
+//     packet.abort_dive_altitude = abort_dive_altitude;
     
-    if (trackGpsdObj != nullptr){
-        packet.target_heading = trackGpsdObj->target_heading;
-        packet.loiter_direction = trackGpsdObj->loiter_direction;
-        packet.dive_pitch_saturation = trackGpsdObj->dive_pitch_saturation;
-        packet.pitch_offset = trackGpsdObj->pitch_offset;
-        /*
-        packet.dive_pitch_saturation = DEFAULT_DIVE_PITCH_SATURATION;
-        packet.pitch_offset = DEFAULT_PITCH_OFFSET;
-        */
-    }
-    mavlink_msg_zas_gpsd_parameters_send_struct(channel, &packet);
-}
+//     if (trackGpsdObj != nullptr){
+//         packet.target_heading = trackGpsdObj->target_heading;
+//         packet.loiter_direction = trackGpsdObj->loiter_direction;
+//         packet.dive_pitch_saturation = trackGpsdObj->dive_pitch_saturation;
+//         packet.pitch_offset = trackGpsdObj->pitch_offset;
+//         /*
+//         packet.dive_pitch_saturation = DEFAULT_DIVE_PITCH_SATURATION;
+//         packet.pitch_offset = DEFAULT_PITCH_OFFSET;
+//         */
+//     }
+//     mavlink_msg_zas_gpsd_parameters_send_struct(channel, &packet);
+// }
 
 bool ModeGPSDive::_enter(){
     //AP_HAL::UARTDriver *uart1 = hal.serial(4);
