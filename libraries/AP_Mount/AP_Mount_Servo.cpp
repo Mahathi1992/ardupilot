@@ -38,11 +38,11 @@ static uint16_t pan_goal, tilt_goal;
 static int16_t poff = 0,toff = 0; // Pitch offset, Tilt Offset
 mavlink_channel_t channel_to_gcs;
 
-extern void send_zas_track3d_parameters(mavlink_channel_t channel);
-extern void send_zas_gpsd_parameters(mavlink_channel_t channel);
-extern void send_zas_track_status_10Hz(mavlink_channel_t);
-extern void send_zas_default_parameters();
-extern void tracker_update_thread_ap_mount_servo();
+// extern void send_zas_track3d_parameters(mavlink_channel_t channel);
+// extern void send_zas_gpsd_parameters(mavlink_channel_t channel);
+// extern void send_zas_track_status_10Hz(mavlink_channel_t);
+// extern void send_zas_default_parameters();
+// extern void tracker_update_thread_ap_mount_servo();
 
 int16_t angles_to_steps(float angle);
 void handle_gimbal_control_servo(float pan_yaw, float tilt_pitch);
@@ -55,58 +55,58 @@ void applyTrackParametersUpdate(mavlink_zas_track_parameters_t *params) {
 }
 
 
-void send_zas_track_status_10Hz(mavlink_channel_t channel) {
-    static uint8_t count_until_send = 0;
-    channel_to_gcs = channel;
+// void send_zas_track_status_10Hz(mavlink_channel_t channel) {
+//     static uint8_t count_until_send = 0;
+//     channel_to_gcs = channel;
 
-    if (count_until_send < 10) {
-        count_until_send++;
-    } else {
-        count_until_send=0;
-        {
-            mavlink_zas_track_status_t packet;
-            packet.track_latitude = (12.77729233*10000000);
-            packet.track_longitude = (77.939283958*10000000);
-            packet.num_tracks = 1;
-            packet.pan = pan_goal;
-            packet.tilt = tilt_goal;
-            packet.commanded_pan = pan_goal;
-            packet.commanded_tilt = tilt_goal;
-            packet.selected_cam = 1;
-            mavlink_msg_zas_track_status_send_struct(channel, &packet);
-            /*
-            if (uartTracker != nullptr){
-                uartTracker->printf("lat: %li, lon: %li.\r\n",packet.track_latitude,packet.track_longitude );
-            }
-            */
-        }
-    }
-}
+//     if (count_until_send < 10) {
+//         count_until_send++;
+//     } else {
+//         count_until_send=0;
+//         {
+//             mavlink_zas_track_status_t packet;
+//             packet.track_latitude = (12.77729233*10000000);
+//             packet.track_longitude = (77.939283958*10000000);
+//             packet.num_tracks = 1;
+//             packet.pan = pan_goal;
+//             packet.tilt = tilt_goal;
+//             packet.commanded_pan = pan_goal;
+//             packet.commanded_tilt = tilt_goal;
+//             packet.selected_cam = 1;
+//             mavlink_msg_zas_track_status_send_struct(channel, &packet);
+//             /*
+//             if (uartTracker != nullptr){
+//                 uartTracker->printf("lat: %li, lon: %li.\r\n",packet.track_latitude,packet.track_longitude );
+//             }
+//             */
+//         }
+//     }
+// }
 
-void send_zas_default_parameters() {
-    mavlink_zas_track_parameters_t track_msg;
+// void send_zas_default_parameters() {
+//     mavlink_zas_track_parameters_t track_msg;
 
-    track_msg.max_misses_before_tracking_lost = parser.stabiliser->max_misses_before_tracking_lost;
-    track_msg.step_value = parser.stabiliser->step_value;
-    track_msg.confidence_threshold = parser.stabiliser->confidence_threshold;
-    track_msg.center_offset_pixel_delta = parser.stabiliser->center_offset_pixel_delta;
-    track_msg.cam0_height = parser.stabiliser->cam0_h;
-    track_msg.cam0_width = parser.stabiliser->cam0_w;
-    track_msg.cam1_height = parser.stabiliser->cam1_h;
-    track_msg.cam1_width = parser.stabiliser->cam1_w;
+//     track_msg.max_misses_before_tracking_lost = parser.stabiliser->max_misses_before_tracking_lost;
+//     track_msg.step_value = parser.stabiliser->step_value;
+//     track_msg.confidence_threshold = parser.stabiliser->confidence_threshold;
+//     track_msg.center_offset_pixel_delta = parser.stabiliser->center_offset_pixel_delta;
+//     track_msg.cam0_height = parser.stabiliser->cam0_h;
+//     track_msg.cam0_width = parser.stabiliser->cam0_w;
+//     track_msg.cam1_height = parser.stabiliser->cam1_h;
+//     track_msg.cam1_width = parser.stabiliser->cam1_w;
 
-    if (uart1Debug != nullptr) {
-        uart1Debug->printf("Sending: Max misses: %li, Step Value: %li, Confidence Threshold: %i, Center Offset: %i, Cam0 W: %i, H: %i, Cam1 W: %i, Cam1 H: %i \r\n",
-                           track_msg.max_misses_before_tracking_lost, track_msg.step_value, track_msg.confidence_threshold, track_msg.center_offset_pixel_delta,
-                           track_msg.cam0_height, track_msg.cam0_width, track_msg.cam1_height, track_msg.cam1_width
-                          );
-    }
+//     if (uart1Debug != nullptr) {
+//         uart1Debug->printf("Sending: Max misses: %li, Step Value: %li, Confidence Threshold: %i, Center Offset: %i, Cam0 W: %i, H: %i, Cam1 W: %i, Cam1 H: %i \r\n",
+//                            track_msg.max_misses_before_tracking_lost, track_msg.step_value, track_msg.confidence_threshold, track_msg.center_offset_pixel_delta,
+//                            track_msg.cam0_height, track_msg.cam0_width, track_msg.cam1_height, track_msg.cam1_width
+//                           );
+//     }
 
-    mavlink_msg_zas_track_parameters_send_struct(channel_to_gcs, &track_msg);
+//     mavlink_msg_zas_track_parameters_send_struct(channel_to_gcs, &track_msg);
 
-    send_zas_track3d_parameters(channel_to_gcs);
-    send_zas_gpsd_parameters(channel_to_gcs);
-}
+//     send_zas_track3d_parameters(channel_to_gcs);
+//     send_zas_gpsd_parameters(channel_to_gcs);
+// }
 
 int16_t angles_to_steps(float angle) {
     // 180 degrees is MAX_SERVO_LIMIT steps
