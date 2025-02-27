@@ -405,6 +405,8 @@ AP_SerialManager::AP_SerialManager()
     _singleton = this;
     // setup parameter defaults
     AP_Param::setup_object_defaults(this, var_info);
+
+    zas_fpv_wh_uart = nullptr;
 }
 
 // init_console - initialise console at default baud rate
@@ -870,6 +872,10 @@ void AP_SerialManager::register_port(RegisteredPort *port)
     }
 }
 #endif // AP_SERIALMANAGER_REGISTER_ENABLED
+
+AP_HAL::UARTDriver* AP_SerialManager::get_warheadFPV_uart(){
+    return zas_fpv_wh_uart;
+}
 
 namespace AP {
 

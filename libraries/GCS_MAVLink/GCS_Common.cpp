@@ -67,6 +67,7 @@
 #include <AP_KDECAN/AP_KDECAN.h>
 #include <AP_LandingGear/AP_LandingGear.h>
 #include <AP_Landing/AP_Landing_config.h>
+#include <ZAS_FPV_WH/zas_fpv_wh.h>
 
 #include "MissionItemProtocol_Waypoints.h"
 #include "MissionItemProtocol_Rally.h"
@@ -815,6 +816,24 @@ void GCS_MAVLINK::handle_mount_message(const mavlink_message_t &msg)
 
 #endif
 
+void GCS_MAVLINK::handle_zas_fpv_wh_cmd_message(const mavlink_message_t &msg)
+{
+    ZAS_FPV_WH *zas_fpv_wh = AP::zas_fpv_wh();
+    if (zas_fpv_wh == nullptr) {
+        return;
+    }
+    zas_fpv_wh->handle_usr_cmd(chan, msg);
+}
+
+void GCS_MAVLINK::send_zas_warhead_status() const
+{
+    ZAS_FPV_WH *zas_fpv_wh = AP::zas_fpv_wh();
+    if (zas_fpv_wh == nullptr) {
+        return;
+    }
+    zas_fpv_wh->send_zas_warhead_status(chan);
+}
+
 /*
   pass parameter value messages through to mount library
  */
@@ -1102,6 +1121,7 @@ ap_message GCS_MAVLINK::mavlink_id_to_ap_message_id(const uint32_t mavlink_id) c
         { MAVLINK_MSG_ID_EKF_STATUS_REPORT,     MSG_EKF_STATUS_REPORT},
         { MAVLINK_MSG_ID_PID_TUNING,            MSG_PID_TUNING},
         { MAVLINK_MSG_ID_VIBRATION,             MSG_VIBRATION},
+        { MAVLINK_MSG_ID_ZAS_ARM_ACK, MSG_ZAS_ARM_ACK},
 #if AP_RPM_ENABLED
         { MAVLINK_MSG_ID_RPM,                   MSG_RPM},
 #endif
@@ -4272,6 +4292,11 @@ void GCS_MAVLINK::handle_message(const mavlink_message_t &msg)
         break;
 #endif
 
+    case MAVLINK_MSG_ID_ZAS_WARHEAD_COMMAND:
+        gcs().send_text(MAV_SEVERITY_INFO, "ZAS FPV MSG RECEIVED! MSG_ID: %d", msg.msgid);
+        handle_zas_fpv_wh_cmd_message(msg);
+        break;
+
     case MAVLINK_MSG_ID_PARAM_VALUE:
         handle_param_value(msg);
         break;
@@ -6285,6 +6310,12 @@ bool GCS_MAVLINK::try_send_message(const enum ap_message id)
     case MSG_POWER_STATUS:
         CHECK_PAYLOAD_SIZE(POWER_STATUS);
         send_power_status();
+        break;
+
+    case MSG_ZAS_ARM_ACK:
+        CHECK_PAYLOAD_SIZE(ZAS_ARM_ACK);
+        send_zas_warhead_status();
+        // GCS_SEND_TEXT(MAV_SEVERITY_INFO,"ZAS gimbal status being sent to GCS");
         break;
 
 #if HAL_WITH_MCU_MONITORING

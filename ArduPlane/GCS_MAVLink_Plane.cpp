@@ -693,6 +693,7 @@ static const ap_message STREAM_EXTRA2_msgs[] = {
 static const ap_message STREAM_EXTRA3_msgs[] = {
     MSG_AHRS,
     MSG_WIND,
+    MSG_ZAS_ARM_ACK,
 #if AP_RANGEFINDER_ENABLED
     MSG_RANGEFINDER,
 #endif

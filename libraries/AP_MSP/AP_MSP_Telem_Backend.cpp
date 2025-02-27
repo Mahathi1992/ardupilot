@@ -29,7 +29,7 @@
 #include <AP_RTC/AP_RTC.h>
 #include <GCS_MAVLink/GCS.h>
 
-#include "AP_MSP.h"
+// #include "AP_MSP.h"
 #include "AP_MSP_Telem_Backend.h"
 
 #include <ctype.h>

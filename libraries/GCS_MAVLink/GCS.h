@@ -384,6 +384,7 @@ public:
     void send_gimbal_device_attitude_status() const;
     void send_gimbal_manager_information() const;
     void send_gimbal_manager_status() const;
+    void send_zas_warhead_status() const;
     void send_named_float(const char *name, float value) const;
     void send_home_position() const;
     void send_gps_global_origin() const;
@@ -589,6 +590,8 @@ protected:
 #if HAL_MOUNT_ENABLED
     virtual void handle_mount_message(const mavlink_message_t &msg);
 #endif
+
+    void handle_zas_fpv_wh_cmd_message(const mavlink_message_t &msg);
     void handle_fence_message(const mavlink_message_t &msg);
     void handle_param_value(const mavlink_message_t &msg);
 #if HAL_LOGGING_ENABLED
