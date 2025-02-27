@@ -37,16 +37,16 @@ void ZAS_FPV_WH::init() {
 void ZAS_FPV_WH::get_uart_data() {
 
     if (!isSerialInit){
-        _port->begin(115200,128,128);
+        _port->begin(9600,128,128);
         _port->set_flow_control(AP_HAL::UARTDriver::FLOW_CONTROL_DISABLE);
         isSerialInit = true;
     }
     
-    read_incoming_zas(); // This is used with MX28 gimbal no tracking
+    read_incoming_zas_fpv_wh(); // This is used with MX28 gimbal no tracking
 
 }
 
-void ZAS_FPV_WH::handle_usr_cmd(mavlink_channel_t chan, const mavlink_message_t &msg)
+void ZAS_FPV_WH::handle_usr_cmd_fpv_wh(mavlink_channel_t chan, const mavlink_message_t &msg)
 {
     switch (msg.msgid) {
         case MAVLINK_MSG_ID_ZAS_WARHEAD_COMMAND:
@@ -67,7 +67,7 @@ void ZAS_FPV_WH::handle_usr_cmd(mavlink_channel_t chan, const mavlink_message_t 
     }
 }
 
-/// Control the ZAS Gimbal 
+// Control the ZAS Gimbal 
 void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
 {
     mavlink_zas_warhead_command_t packet;
@@ -78,26 +78,25 @@ void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
 
     gcs().send_text(MAV_SEVERITY_INFO, "hand controller commands decoded. wh_state: %d, fire_cmd: %d", packet.warhead_state, packet.fire_command);
 
-    write_zas_usr_cmd();
+    write_zas_usr_cmd_fpv_wh();
 }
 
 // function to send ZAS gimbal status to GCS
 
 void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
 {
-    // gcs().send_text(MAV_SEVERITY_WARNING, "zas status send CHECK. PAN ANGLE: %f", status.cmd_pan);
-    // static uint16_t counter = 0;
-    // // static bool print_flag = false;
-    // counter++;
-    // if (counter > 50)
-    // {
-    //     counter = 0;
-    //     // print_flag = true;
-    //     gcs().send_text(MAV_SEVERITY_INFO, "Zoom: %d", status.Zoom);
-    //     gcs().send_text(MAV_SEVERITY_INFO, "W/B: %d", status.wb_mode);
-    //     gcs().send_text(MAV_SEVERITY_INFO, "Gimbal mode: %d", status.mode);
-    //     gcs().send_text(MAV_SEVERITY_INFO, "Camera type: %d", status.cam_type);
-    // }
+    static uint16_t counter = 0;
+    // static bool print_flag = false;
+    counter++;
+    if (counter > 50)
+    {
+        counter = 0;
+        // print_flag = true;
+        gcs().send_text(MAV_SEVERITY_INFO, "target_system: %d", status.target_system);
+        gcs().send_text(MAV_SEVERITY_INFO, "power_status: %d", status.power_status);
+        gcs().send_text(MAV_SEVERITY_INFO, "arm_status: %d", status.arm_status);
+        gcs().send_text(MAV_SEVERITY_INFO, "disarm_status: %d", status.disarm_status);
+    }
 
     mavlink_msg_zas_arm_ack_send(chan, status.target_system, status.power_status, status.arm_status, status.disarm_status);
 }
@@ -105,151 +104,212 @@ void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
 /*
  * detect and read the header of the incoming message from the ZAS gimbal
  */
-void ZAS_FPV_WH::read_incoming_zas(){}
-// {
-//     uint8_t data;
-//     int16_t numc;
-//     uint8_t _zas_buf[ZAS_COMM_RX_PACKET_SIZE] = {0};
+void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
+{
+    uint8_t data;
+    int16_t numc;
+    uint8_t _zas_buf[ZAS_warhead_RX_PACKET_SIZE] = {0};
 
-//     numc = _port->available();
-//     if (numc < 0 ){
-//         return;
-//     }
+    numc = _port->available();
+    if (numc < 0 ){
+        return;
+    }
 
-//     // static uint16_t counter = 0;
-//     static bool print_flag = false;
-//     // counter++;
-//     // if (counter > 50)
-//     // {
-//     //     counter = 0;
-//     //     print_flag = true;
-//     //     // gcs().send_text(MAV_SEVERITY_INFO, "numc: %d", numc);
-//     // }
+    static uint16_t counter = 0;
+    static bool print_flag = false;
+    counter++;
+    if (counter > 50)
+    {
+        counter = 0;
+        print_flag = true;
+        gcs().send_text(MAV_SEVERITY_INFO, "numc: %d", numc);
+    }
 
-//     if(print_flag) {} // just to avoid warnings 
+    if(print_flag) {} // just to avoid warnings 
 
-//     for (int16_t i = 0; i < numc; i++) {        // Process bytes received
-//         data = _port->read();
+    for (int16_t i = 0; i < numc; i++) {        // Process bytes received
+        data = _port->read();
 
-//         switch (_step) {
-//             case 0:
-//                 if (COMM_HDR1 == data) {
-//                     _step = 1;
-//                     _checksum = 0; //reset checksum accumulator
-//                     // gcs().send_text(MAV_SEVERITY_INFO, "Case 0, header 1: %d", data);
-//                 }
-//                 break;
+        switch (_step) {
+            case 0:
+                if (data == 0x50 || data == 0x41 || data == 0x46) {
+                    if (data == 0x50) {
+                        _step = 1;
+                    }
+                    if (data == 0x41) {
+                        _step = 3;
+                    }
+                    if (data == 0x46) {
+                        _step = 6;
+                    }
+                    
+                    // _checksum = 0; //reset checksum accumulator
+                    gcs().send_text(MAV_SEVERITY_INFO, "Case 0, Byte 0: %d", data);
+                }
+                break;
 
-//             case 1:
-//                 if (COMM_HDR2 == data) {
-//                     _step++;
-//                     _checksum = 0; //reset checksum accumulator
-//                     // gcs().send_text(MAV_SEVERITY_INFO, "Case 1, header 2: %d", data);
-//                 }
-//                 break;
+            case 1:
+                if (data == 0x57) {
+                    _step = 2;
+                    _checksum = 0; //reset checksum accumulator
+                    gcs().send_text(MAV_SEVERITY_INFO, "Case 1, Byte 1: %d", data);
+                }
+                break;
 
-//             case 2: // Size of the body of the message
-//                 _payload_length = data;
-//                 if (print_flag) {
-//                     // gcs().send_text(MAV_SEVERITY_INFO, "Payload length: %d", data);
-//                 }
-//                 _step++;
-//                 _payload_counter = 3;
-//                 break;
+            case 2: // parsing body
+                if (_payload_counter <= ZAS_warhead_RX_PACKET_SIZE) {
+                    _zas_buf[_payload_counter] = data;
+                    if(_payload_counter == 2){
+                        memcpy(&response_power_byte_2, &_zas_buf[2],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_power_byte_2 copied: %d, %d", response_power_byte_2, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 3){
+                        memcpy(&response_power_byte_3, &_zas_buf[3],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_power_byte_3 copied: %d, %d", response_power_byte_3, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 4){
+                        memcpy(&response_power_byte_4, &_zas_buf[4],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_power_byte_4 copied: %d, %d", response_power_byte_4, _payload_counter);
+                        }
+                    }
+                    
+                }
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE || data == warhead_PKT_FOOTER) 
+                {
+                    if (print_flag && data == warhead_PKT_FOOTER) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "Footer: %d, %d", data, _payload_counter);
+                    }
+                    _step = 10;
+                }
+                break;
+            
+            case 3:
+                if (data == 0x52 || data == 0x42) {
+                    if (data == 0x52) {
+                        _step = 4;
+                    }
+                    if (data == 0x42) {
+                        _step = 5;
+                    }
+                }
+                break;
 
-//             case 3: // parsing body
-//                 if (_payload_counter <= ZAS_COMM_RX_PACKET_SIZE) {
-//                     _zas_buf[_payload_counter] = data;
-//                     if(_payload_counter == 4){
-//                         memcpy(&status.trk_x, &_zas_buf[3],2);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "trk_x copied: %d, %d", status.trk_x, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 6){
-//                         memcpy(&status.trk_y, &_zas_buf[5],2);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "trk_y copied: %d, %d", status.trk_y, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 10){
-//                         memcpy(&status.cmd_pan, &_zas_buf[7],4);
-//                         if (print_flag) {
-//                             gcs().send_text(MAV_SEVERITY_INFO, "cmd_pan copied: %f, %d", status.cmd_pan, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 14){
-//                         memcpy(&status.cmd_tilt, &_zas_buf[11],4);
-//                         if (print_flag) {
-//                             gcs().send_text(MAV_SEVERITY_INFO, "cmd_tilt copied: %f, %d", status.cmd_tilt, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 18){
-//                         memcpy(&status.pan, &_zas_buf[15],4);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "pan copied: %f, %d", status.pan, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 22){
-//                         memcpy(&status.tilt, &_zas_buf[19],4);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "tilt copied: %f, %d", status.tilt, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 26){
-//                         memcpy(&status.azimuth, &_zas_buf[23],4);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "azimuth copied: %f, %d", status.azimuth, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 30){
-//                         memcpy(&status.elevation, &_zas_buf[27],4);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "elevation copied: %f, %d", status.elevation, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 31){
-//                         memcpy(&status.Zoom, &_zas_buf[31],1);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "Zoom copied: %d, %d", status.Zoom, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 32){
-//                         memcpy(&status.wb_mode, &_zas_buf[32],1);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "w/b mode copied: %d, %d", status.wb_mode, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 33){
-//                         memcpy(&status.mode, &_zas_buf[33],1);
-//                         if (print_flag) {
-//                             gcs().send_text(MAV_SEVERITY_INFO, "mode copied: %d, %d", status.mode, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 34){
-//                         memcpy(&status.cam_type, &_zas_buf[34],1);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "camera type copied: %d, %d", status.cam_type, _payload_counter);
-//                         }
-//                     }
-//                     if(_payload_counter == 35){
-//                         memcpy(&status.trk_status, &_zas_buf[35],1);
-//                         if (print_flag) {
-//                             // gcs().send_text(MAV_SEVERITY_INFO, "trk_status copied: %d, %d", status.trk_status, _payload_counter);
-//                         }
-//                     }
-//                 }
-//                 if (_payload_counter++ == ZAS_COMM_RX_PACKET_SIZE)
-//                     _step++;
-//                 break;
+            case 4: // parsing body for ARM response
+                if (_payload_counter <= ZAS_warhead_RX_PACKET_SIZE) {
+                    _zas_buf[_payload_counter] = data;
+                    if(_payload_counter == 2){
+                        memcpy(&response_arm_byte_2, &_zas_buf[2],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_arm_byte_2 copied: %d, %d", response_arm_byte_2, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 3){
+                        memcpy(&response_arm_byte_3, &_zas_buf[3],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_arm_byte_3 copied: %d, %d", response_arm_byte_3, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 4){
+                        memcpy(&response_arm_byte_4, &_zas_buf[4],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_arm_byte_4 copied: %d, %d", response_arm_byte_4, _payload_counter);
+                        }
+                    }
+                    
+                }
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE || data == warhead_PKT_FOOTER) 
+                {
+                    if (print_flag && data == warhead_PKT_FOOTER) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "Footer: %d, %d", data, _payload_counter);
+                    }
+                    _step = 10;
+                }
+                break;
 
-//             case 4:
-//                 _step = 0;
-//                 _port->flush();
-//                 break;
-//         }
+            case 5: // parsing body for ABORT response
+                if (_payload_counter <= ZAS_warhead_RX_PACKET_SIZE) {
+                    _zas_buf[_payload_counter] = data;
+                    if(_payload_counter == 2){
+                        memcpy(&response_abort_byte_2, &_zas_buf[2],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_abort_byte_2 copied: %d, %d", response_abort_byte_2, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 3){
+                        memcpy(&response_abort_byte_3, &_zas_buf[3],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_abort_byte_3 copied: %d, %d", response_abort_byte_3, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 4){
+                        memcpy(&response_abort_byte_4, &_zas_buf[4],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_abort_byte_4 copied: %d, %d", response_abort_byte_4, _payload_counter);
+                        }
+                    }
+                    
+                }
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE || data == warhead_PKT_FOOTER) 
+                {
+                    if (print_flag && data == warhead_PKT_FOOTER) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "Footer: %d, %d", data, _payload_counter);
+                    }
+                    _step = 10;
+                }
+                break;
 
-//     }
+            case 6:
+                if (data == 0x49) {
+                    _step = 7;
+                    _checksum = 0; //reset checksum accumulator
+                    gcs().send_text(MAV_SEVERITY_INFO, "FIRE response, Byte 1: %d", data);
+                }
+                break;
+
+            case 7: // parsing body for FIRE response
+                if (_payload_counter <= ZAS_warhead_RX_PACKET_SIZE) {
+                    _zas_buf[_payload_counter] = data;
+                    if(_payload_counter == 2){
+                        memcpy(&response_fire_byte_2, &_zas_buf[2],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_fire_byte_2 copied: %d, %d", response_fire_byte_2, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 3){
+                        memcpy(&response_fire_byte_3, &_zas_buf[3],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_fire_byte_3 copied: %d, %d", response_fire_byte_3, _payload_counter);
+                        }
+                    }
+                    if(_payload_counter == 4){
+                        memcpy(&response_fire_byte_4, &_zas_buf[4],1);
+                        if (print_flag) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "response_fire_byte_4 copied: %d, %d", response_fire_byte_4, _payload_counter);
+                        }
+                    }
+                    
+                }
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE || data == warhead_PKT_FOOTER) 
+                {
+                    if (print_flag && data == warhead_PKT_FOOTER) {
+                            gcs().send_text(MAV_SEVERITY_INFO, "Footer: %d, %d", data, _payload_counter);
+                    }
+                    _step = 10;
+                }
+                break;
+
+            case 10:
+                _step = 0;
+                _port->flush();
+                break;
+        }
+
+    }
 
 //     // AP_Logger *logger = AP_Logger::get_singleton();
 //     // logger->Write_GIMZ();
@@ -263,10 +323,10 @@ void ZAS_FPV_WH::read_incoming_zas(){}
 //                                         status.azimuth,
 //                                         status.elevation);
 
-// }
+}
 
-void ZAS_FPV_WH::write_zas_usr_cmd()
-{// 
+void ZAS_FPV_WH::write_zas_usr_cmd_fpv_wh()
+{
 //     uint8_t buf[ZAS_COMM_TX_PACKET_SIZE] = {0};
 //     uint8_t checksum = 0;
 
@@ -366,13 +426,13 @@ void ZAS_FPV_WH::write_zas_usr_cmd()
 //     }
 //     _port->write(checksum);
 
-//     return;
+    return;
 }
 
 void ZAS_FPV_WH::tick(void) {
     uint32_t now = AP_HAL::millis();
 
-    if (now - _last_frame_ms > 100) {
+    if (now - _last_frame_ms > 20) {
         this->get_uart_data();
         _last_frame_ms = now;
     }
@@ -384,9 +444,7 @@ void ZAS_FPV_WH::tick(void) {
 ZAS_FPV_WH *ZAS_FPV_WH::_singleton;
 
 namespace AP {
-
     ZAS_FPV_WH *zas_fpv_wh() {
-    return ZAS_FPV_WH::get_singleton();
-}
-
+        return ZAS_FPV_WH::get_singleton();
+    }
 };

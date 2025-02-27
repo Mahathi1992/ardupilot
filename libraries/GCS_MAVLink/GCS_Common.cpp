@@ -822,7 +822,7 @@ void GCS_MAVLINK::handle_zas_fpv_wh_cmd_message(const mavlink_message_t &msg)
     if (zas_fpv_wh == nullptr) {
         return;
     }
-    zas_fpv_wh->handle_usr_cmd(chan, msg);
+    zas_fpv_wh->handle_usr_cmd_fpv_wh(chan, msg);
 }
 
 void GCS_MAVLINK::send_zas_warhead_status() const

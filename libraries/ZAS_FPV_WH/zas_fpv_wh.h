@@ -10,18 +10,9 @@
  #include <GCS_MAVLink/GCS_MAVLink.h>
  
  // define ZAS gimbal serial communication parameters
- #define ZAS_COMM_RX_PACKET_SIZE 38
- #define ZAS_COMM_TX_PACKET_SIZE 20
- #define TRACK_COMM_PKT_SIZE 29  // for getting JetsonNano tracker data. Added by Mahathi
- #define TRACK_HDR1 0x51
- #define TRACK_HDR2 0xAC
- 
- #define COMM_HDR1 0xFF
- #define COMM_HDR2 0xF0
- #define GCS_HDR1 100
- #define GCS_HDR2 100
- #define GCS_HDR3 240
- 
+ #define ZAS_warhead_RX_PACKET_SIZE 6
+ #define ZAS_warhead_TX_PACKET_SIZE 5
+ #define warhead_PKT_FOOTER 0x0A 
  
  class ZAS_FPV_WH {
  public:
@@ -39,12 +30,12 @@
      void init();
  
      // write usr commands from GCS onto UART port
-     void write_zas_usr_cmd();
+     void write_zas_usr_cmd_fpv_wh();
  
      //read incoming data from ZAS warhead
-     void read_incoming_zas();
+     void read_incoming_zas_fpv_wh();
  
-     void handle_usr_cmd(mavlink_channel_t chan, const mavlink_message_t &msg);
+     void handle_usr_cmd_fpv_wh(mavlink_channel_t chan, const mavlink_message_t &msg);
  
      void handle_zas_warhead_command(const mavlink_message_t &msg);
  
@@ -68,6 +59,22 @@
      uint8_t _command_id;
      uint8_t _payload_length;
      uint8_t _payload_counter;
+
+     uint8_t response_power_byte_2;
+     uint8_t response_power_byte_3;
+     uint8_t response_power_byte_4;
+
+     uint8_t response_arm_byte_2;
+     uint8_t response_arm_byte_3;
+     uint8_t response_arm_byte_4;
+
+     uint8_t response_fire_byte_2;
+     uint8_t response_fire_byte_3;
+     uint8_t response_fire_byte_4;
+
+     uint8_t response_abort_byte_2;
+     uint8_t response_abort_byte_3;
+     uint8_t response_abort_byte_4;
  
      // struct definition for sending data from ZAS gimbal to GCS
      struct PACKED zas_fpv_status_t
