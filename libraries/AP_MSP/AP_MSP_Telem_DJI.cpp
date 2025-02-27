@@ -19,7 +19,7 @@
 #include <AP_RSSI/AP_RSSI.h>
 #include <AP_Notify/AP_Notify.h>
 
-#include "AP_MSP.h"
+// #include "AP_MSP.h"
 #include "AP_MSP_Telem_DJI.h"
 
 #include <stdio.h>

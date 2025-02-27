@@ -17,8 +17,8 @@
 #include <AP_Proximity/AP_Proximity.h>
 #include <AP_EFI/AP_EFI.h>
 #include <AP_KDECAN/AP_KDECAN.h>
-#include <AP_MSP/AP_MSP.h>
-#include <AP_MSP/msp.h>
+// #include <AP_MSP/AP_MSP.h>
+// #include <AP_MSP/msp.h>
 #include <AP_TemperatureSensor/AP_TemperatureSensor.h>
 #include "../AP_Bootloader/app_comms.h"
 #include <AP_CheckFirmware/AP_CheckFirmware.h>
@@ -266,21 +266,21 @@ public:
 #endif
 
 #if AP_PERIPH_MSP_ENABLED
-    struct {
-        AP_MSP msp;
-        MSP::msp_port_t port;
-        uint32_t last_gps_ms;
-        uint32_t last_baro_ms;
-        uint32_t last_mag_ms;
-        uint32_t last_airspeed_ms;
-    } msp;
-    void msp_init(AP_HAL::UARTDriver *_uart);
-    void msp_sensor_update(void);
-    void send_msp_packet(uint16_t cmd, void *p, uint16_t size);
-    void send_msp_GPS(void);
-    void send_msp_compass(void);
-    void send_msp_baro(void);
-    void send_msp_airspeed(void);
+    // struct {
+    //     AP_MSP msp;
+    //     MSP::msp_port_t port;
+    //     uint32_t last_gps_ms;
+    //     uint32_t last_baro_ms;
+    //     uint32_t last_mag_ms;
+    //     uint32_t last_airspeed_ms;
+    // } msp;
+    // void msp_init(AP_HAL::UARTDriver *_uart);
+    // void msp_sensor_update(void);
+    // void send_msp_packet(uint16_t cmd, void *p, uint16_t size);
+    // void send_msp_GPS(void);
+    // void send_msp_compass(void);
+    // void send_msp_baro(void);
+    // void send_msp_airspeed(void);
 #endif
     
 #if AP_PERIPH_ADSB_ENABLED

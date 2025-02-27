@@ -2058,8 +2058,9 @@ void AP_OSD_Screen::draw_esc_amps(uint8_t x, uint8_t y)
 #if AP_OSD_EXTENDED_LNK_STATS
 bool AP_OSD_Screen::is_btfl_fonts()
 {
-    const AP_MSP *p_msp = AP::msp();
-    return (p_msp != nullptr && p_msp->is_option_enabled(AP_MSP::Option::DISPLAYPORT_BTFL_SYMBOLS));
+    // const AP_MSP *p_msp = AP::msp();
+    // return (p_msp != nullptr && p_msp->is_option_enabled(AP_MSP::Option::DISPLAYPORT_BTFL_SYMBOLS));
+    return false;
 }
 
 void AP_OSD_Screen::draw_rc_tx_power(uint8_t x, uint8_t y)

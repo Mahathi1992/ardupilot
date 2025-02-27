@@ -69,7 +69,7 @@ public:
         SerialProtocol_Generator = 30,
         SerialProtocol_Winch = 31,
         SerialProtocol_MSP = 32,
-        SerialProtocol_DJI_FPV = 33,
+        SerialProtocol_ZAS_FPV = 33,
         SerialProtocol_AirSpeed = 34,
         SerialProtocol_ADSB = 35,
         SerialProtocol_AHRS = 36,
@@ -134,6 +134,8 @@ public:
 
     static uint32_t map_baudrate(int32_t rate);
 
+    AP_HAL::UARTDriver* get_warheadFPV_uart();
+
     // parameter var table
     static const struct AP_Param::GroupInfo var_info[];
 
@@ -190,6 +192,8 @@ public:
 
 #endif // AP_SERIALMANAGER_REGISTER_ENABLED
 
+protected:
+    AP_HAL::UARTDriver* zas_fpv_wh_uart;
 
 private:
     static AP_SerialManager *_singleton;

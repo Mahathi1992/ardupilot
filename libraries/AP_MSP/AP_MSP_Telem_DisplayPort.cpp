@@ -16,7 +16,7 @@
 #include <AP_Common/AP_FWVersion.h>
 #include <AP_Vehicle/AP_Vehicle_Type.h>
 
-#include "AP_MSP.h"
+// #include "AP_MSP.h"
 #include "AP_MSP_Telem_DisplayPort.h"
 
 #if HAL_WITH_MSP_DISPLAYPORT

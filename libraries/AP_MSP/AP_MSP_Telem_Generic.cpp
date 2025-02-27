@@ -16,7 +16,7 @@
 #include <AP_Common/AP_FWVersion.h>
 #include <AP_Vehicle/AP_Vehicle_Type.h>
 
-#include "AP_MSP.h"
+// #include "AP_MSP.h"
 #include "AP_MSP_Telem_Generic.h"
 
 #if HAL_MSP_ENABLED

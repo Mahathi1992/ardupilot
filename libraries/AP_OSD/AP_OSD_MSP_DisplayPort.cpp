@@ -37,16 +37,16 @@ constexpr uint8_t AP_OSD_MSP_DisplayPort::symbols[AP_OSD_NUM_SYMBOLS];
 bool AP_OSD_MSP_DisplayPort::init(void)
 {
     // check if we have a DisplayPort backend to use
-    const AP_MSP *msp = AP::msp();
-    if (msp == nullptr) {
+    // const AP_MSP *msp = AP::msp();
+    // if (msp == nullptr) {
         GCS_SEND_TEXT(MAV_SEVERITY_WARNING,"MSP backend not available");
         return false;
-    }
-    _displayport = msp->find_protocol(AP_SerialManager::SerialProtocol_MSP_DisplayPort);
-    if (_displayport == nullptr) {
+    // }
+    // _displayport = msp->find_protocol(AP_SerialManager::SerialProtocol_MSP_DisplayPort);
+    // if (_displayport == nullptr) {
         GCS_SEND_TEXT(MAV_SEVERITY_WARNING,"MSP DisplayPort uart not available");
         return false;
-    }
+    // }
     // re-init port here for use in this thread
     _displayport->init_uart();
     return true;
@@ -88,31 +88,32 @@ void AP_OSD_MSP_DisplayPort::write(uint8_t x, uint8_t y, const char* text)
 
 uint8_t AP_OSD_MSP_DisplayPort::format_string_for_osd(char* buff, uint8_t size, bool decimal_packed, const char *fmt, va_list ap)
 {
-    const AP_MSP *msp = AP::msp();
-    const bool pack =  decimal_packed && msp && !msp->is_option_enabled(AP_MSP::Option::DISPLAYPORT_BTFL_SYMBOLS);
-    return AP_OSD_Backend::format_string_for_osd(buff, size, pack, fmt, ap);
+    // const AP_MSP *msp = AP::msp();
+    // const bool pack =  decimal_packed && msp && !msp->is_option_enabled(AP_MSP::Option::DISPLAYPORT_BTFL_SYMBOLS);
+    // return AP_OSD_Backend::format_string_for_osd(buff, size, pack, fmt, ap);
+    return 0;
 }
 
 void AP_OSD_MSP_DisplayPort::flush(void)
 {
     // grab the screen and force a redraw
-    _displayport->msp_displayport_grab();
-    _displayport->msp_displayport_draw_screen();
+    // _displayport->msp_displayport_grab();
+    // _displayport->msp_displayport_draw_screen();
 
-    // ok done processing displayport data
-    // let's process incoming MSP frames (and reply if needed)
-    _displayport->process_incoming_data();
+    // // ok done processing displayport data
+    // // let's process incoming MSP frames (and reply if needed)
+    // _displayport->process_incoming_data();
 }
 
 void AP_OSD_MSP_DisplayPort::init_symbol_set(uint8_t *lookup_table, const uint8_t size)
 {
-    const AP_MSP *msp = AP::msp();
-    // do we use backend specific symbols table?
-    if (msp && msp->is_option_enabled(AP_MSP::Option::DISPLAYPORT_BTFL_SYMBOLS)) {
-        memcpy(lookup_table, symbols, size);
-    } else {
-        memcpy(lookup_table, AP_OSD_Backend::symbols, size);
-    }
+    // const AP_MSP *msp = AP::msp();
+    // // do we use backend specific symbols table?
+    // if (msp && msp->is_option_enabled(AP_MSP::Option::DISPLAYPORT_BTFL_SYMBOLS)) {
+    //     memcpy(lookup_table, symbols, size);
+    // } else {
+    //     memcpy(lookup_table, AP_OSD_Backend::symbols, size);
+    // }
 }
 
 // override built in positions with defaults for MSP OSD

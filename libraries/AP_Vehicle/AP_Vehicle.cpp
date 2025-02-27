@@ -59,7 +59,7 @@ const AP_Param::GroupInfo AP_Vehicle::var_info[] = {
 #if HAL_MSP_ENABLED
     // @Group: MSP
     // @Path: ../AP_MSP/AP_MSP.cpp
-    AP_SUBGROUPINFO(msp, "MSP",  5, AP_Vehicle, AP_MSP),
+    // AP_SUBGROUPINFO(msp, "MSP",  5, AP_Vehicle, AP_MSP),
 #endif
 
 #if HAL_WITH_FRSKY_TELEM_BIDIRECTIONAL
@@ -383,7 +383,7 @@ void AP_Vehicle::setup()
 
 #if HAL_MSP_ENABLED
     // call MSP init before init_ardupilot to allow for MSP sensors
-    msp.init();
+    // msp.init();
 #endif
 
 #if HAL_EXTERNAL_AHRS_ENABLED

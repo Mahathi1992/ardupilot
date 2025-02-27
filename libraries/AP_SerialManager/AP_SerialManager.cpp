@@ -27,7 +27,7 @@
 #include <AP_HAL/AP_HAL.h>
 #include <AP_Math/AP_Math.h>
 #include <AP_RCProtocol/AP_RCProtocol.h>
-#include <AP_MSP/AP_MSP.h>
+// #include <AP_MSP/AP_MSP.h>
 #include <AP_InertialSensor/AP_InertialSensor.h>
 #include "AP_SerialManager.h"
 #include <GCS_MAVLink/GCS.h>
@@ -556,8 +556,13 @@ void AP_SerialManager::init()
                 case SerialProtocol_Generator:
                     break;
 #if HAL_MSP_ENABLED                    
+                case SerialProtocol_ZAS_FPV:
+                    zas_fpv_wh_uart = uart;
+                    uart->begin(map_baudrate(state[i].baud), AP_SERIALMANAGER_FPV_BUFSIZE_RX, AP_SERIALMANAGER_FPV_BUFSIZE_TX);
+                    uart->set_flow_control(AP_HAL::UARTDriver::FLOW_CONTROL_DISABLE);
+                    uart->printf("ZAS FPV warhead\r\n");
+                break;
                 case SerialProtocol_MSP:
-                case SerialProtocol_DJI_FPV:
                 case SerialProtocol_MSP_DisplayPort:
                     // baudrate defaults to 115200
                     state[i].baud.set_default(AP_SERIALMANAGER_MSP_BAUD/1000);

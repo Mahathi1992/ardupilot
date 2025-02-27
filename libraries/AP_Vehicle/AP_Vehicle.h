@@ -55,7 +55,7 @@
 #include <AP_Networking/AP_Networking.h>
 #include <AP_VisualOdom/AP_VisualOdom.h>
 #include <AP_VideoTX/AP_VideoTX.h>
-#include <AP_MSP/AP_MSP.h>
+// #include <AP_MSP/AP_MSP.h>
 #include <AP_Frsky_Telem/AP_Frsky_Parameters.h>
 #include <AP_ExternalAHRS/AP_ExternalAHRS.h>
 #include <AP_VideoTX/AP_SmartAudio.h>
@@ -421,7 +421,7 @@ protected:
 #endif
 
 #if HAL_MSP_ENABLED
-    AP_MSP msp;
+    // AP_MSP msp;
 #endif
 
 #if HAL_GENERATOR_ENABLED
