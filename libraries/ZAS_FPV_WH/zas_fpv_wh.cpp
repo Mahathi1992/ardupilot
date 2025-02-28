@@ -125,7 +125,7 @@ void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
     }
 
     if (!disarm_sent_flag) {
-        status.arm_status = 0x47;
+        status.disarm_status = 0x47;
         gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM NOT sent");
     }
     if (response_abort_byte_2 == 0x54 && response_abort_byte_3 == 0x4F && response_abort_byte_4 == 0x4B && disarm_sent_flag) {
