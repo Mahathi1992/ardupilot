@@ -4293,7 +4293,7 @@ void GCS_MAVLINK::handle_message(const mavlink_message_t &msg)
 #endif
 
     case MAVLINK_MSG_ID_ZAS_WARHEAD_COMMAND:
-        gcs().send_text(MAV_SEVERITY_INFO, "ZAS FPV MSG RECEIVED! MSG_ID: %d", msg.msgid);
+        // gcs().send_text(MAV_SEVERITY_INFO, "ZAS FPV MSG RECEIVED! MSG_ID: %d", msg.msgid);
         handle_zas_fpv_wh_cmd_message(msg);
         break;
 
@@ -6315,7 +6315,7 @@ bool GCS_MAVLINK::try_send_message(const enum ap_message id)
     case MSG_ZAS_ARM_ACK:
         CHECK_PAYLOAD_SIZE(ZAS_ARM_ACK);
         send_zas_warhead_status();
-        // GCS_SEND_TEXT(MAV_SEVERITY_INFO,"ZAS gimbal status being sent to GCS");
+        GCS_SEND_TEXT(MAV_SEVERITY_INFO,"ZAS fpv warhead status being sent to GCS");
         break;
 
 #if HAL_WITH_MCU_MONITORING

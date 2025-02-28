@@ -4,6 +4,7 @@
 #include <AP_BattMonitor/AP_BattMonitor.h>
 #include <GCS_MAVLink/GCS.h>
 #include <AP_Logger/AP_Logger.h>
+#include <AP_HAL/AP_HAL.h>
 
 extern const AP_HAL::HAL& hal;
 
@@ -11,7 +12,7 @@ extern const AP_HAL::HAL& hal;
 ZAS_FPV_WH::ZAS_FPV_WH() {
     if (_singleton != nullptr) {
 #if CONFIG_HAL_BOARD == HAL_BOARD_SITL
-        AP_HAL::panic("mx28_gimbal must be singleton");
+        AP_HAL::panic("zas fpv wh must be singleton");
 #endif
         return;
     }
@@ -75,6 +76,22 @@ void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
 
     usr_cmd.wh_state_cmd = packet.warhead_state; //mode=201
     usr_cmd.fire_cmd = packet.fire_command; 
+
+    if (power_status_prev == 0xA5 && usr_cmd.wh_state_cmd == 0xA5) {
+        hal.gpio->pinMode(gpio_pin_wh, HAL_GPIO_OUTPUT);
+        hal.gpio->write(gpio_pin_wh, 0);
+        power_status_prev = usr_cmd.wh_state_cmd;
+    } else if (power_status_prev == 0xA5 && usr_cmd.wh_state_cmd == 0x3F) {
+        power_status_prev = usr_cmd.wh_state_cmd;
+        power_status_flag_zas = true;
+    } else if (power_status_prev == 0x3F && usr_cmd.wh_state_cmd == 0xA5) {
+        power_status_prev = usr_cmd.wh_state_cmd;
+        power_status_flag_zas = false;
+    } else if (power_status_prev == 0x3F && usr_cmd.wh_state_cmd == 0x3F) {
+        // Do nothing
+    } else {
+        gcs().send_text(MAV_SEVERITY_WARNING, "PANIC, power wh command not working");
+    }
 
     gcs().send_text(MAV_SEVERITY_INFO, "hand controller commands decoded. wh_state: %d, fire_cmd: %d", packet.warhead_state, packet.fire_command);
 
@@ -327,104 +344,78 @@ void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
 
 void ZAS_FPV_WH::write_zas_usr_cmd_fpv_wh()
 {
-//     uint8_t buf[ZAS_COMM_TX_PACKET_SIZE] = {0};
-//     uint8_t checksum = 0;
+    uint8_t buf[ZAS_warhead_TX_PACKET_SIZE] = {0};
+    uint8_t checksum = 0;
 
-//     // _port->flush();
+    // _port->flush();
 
-//     // check for sufficient space in outgoing buffer
-//     if (_port->txspace() < ZAS_COMM_TX_PACKET_SIZE+1) {
-//         return;
-//     }
+    // check for sufficient space in outgoing buffer
+    if (_port->txspace() < ZAS_warhead_TX_PACKET_SIZE+1) {
+        return;
+    }
 
-//     buf[0] = GCS_HDR1;
-//     buf[1] = GCS_HDR2;
-//     buf[2] = GCS_HDR3;
+    for (uint8_t cmd_counter = 0; cmd_counter < 5; cmd_counter++) {
 
-//     ZAS_MOUNT_MODE mode = (ZAS_MOUNT_MODE)usr_cmd.mode;
-//     // usr_cmd.mode = 5;
-    
-//     // gcs().send_text(MAV_SEVERITY_INFO, "mode: %d", mode);
+        if (power_status_flag_zas) {
+            buf[0] = 0x50;
+            buf[1] = 0x57;
+            buf[2] = 0x52;
+            buf[3] = 0x53;
+            buf[4] = 0xE2;
+        } 
+    }
 
-//     memcpy(&buf[3], &usr_cmd.mode, 1);
-//     buf[4] = ZAS_COMM_TX_PACKET_SIZE - 7; //msg length only takes into account payload+crc+unused
-//     // write switch case based on mode
+    for (uint8_t cmd_counter_2 = 0; cmd_counter_2 < 5; cmd_counter_2++) {
 
-//     switch (mode) {
+        if (response_power_byte_2 == 0x52 && response_power_byte_3 == 0x4F && response_power_byte_4 == 0x4B) {
+            buf[0] = 0x41;
+            buf[1] = 0x52;
+            buf[2] = 0x4D;
+            buf[3] = 0x53;
+            buf[4] = 0xE0;
+        } 
+    }
 
-//         case ZAS_MOUNT_MODE_HOME:
-//             break;
-//         case ZAS_MOUNT_MODE_STABILIZE:
-//             memcpy(&buf[7], &usr_cmd.submode, 1);
-            
-//             if (usr_cmd.submode == 1){
-//                 memcpy(&buf[8], &usr_cmd.rollrate, 4);
-//                 memcpy(&buf[12], &usr_cmd.pitchrate, 4);
-//                 memcpy(&buf[16], &usr_cmd.yawrate, 4);
-//             }
-//             else if (usr_cmd.submode == 2){
-//                 memcpy(&buf[12], &usr_cmd.des_tilt, 4);
-//                 memcpy(&buf[16], &usr_cmd.des_pan, 4);
-//                 // gcs().send_text(MAV_SEVERITY_DEBUG, "ZAS Gimbal in STAB mode. SUBmode: %d, cmd_pan: %f", usr_cmd.submode, usr_cmd.des_pan);
-//             }
-//             break;
-//         case ZAS_MOUNT_MODE_GEOPOINT:
-//             memcpy(&buf[8], &usr_cmd.target_lat, 4);
-//             memcpy(&buf[12], &usr_cmd.target_lng, 4);
-//             memcpy(&buf[16], &usr_cmd.target_amsl, 4);
-//             break;
-//         case ZAS_MOUNT_MODE_PILOT:
-//             memcpy(&buf[7], &usr_cmd.submode, 1);
+    for (uint8_t cmd_counter_3 = 0; cmd_counter_3 < 5; cmd_counter_3++) {
+        if (status.arm_status == 0xF3 && usr_cmd.wh_state_cmd == 0xE2) {
+            buf[0] = 0x46;
+            buf[1] = 0x49;
+            buf[2] = 0x52;
+            buf[3] = 0x53;
+            buf[4] = 0xE1;
+        }
+    }
 
-//             if (usr_cmd.submode == 1){
-//                 memcpy(&buf[8], &usr_cmd.rollrate, 4);
-//                 memcpy(&buf[12], &usr_cmd.pitchrate, 4);
-//                 memcpy(&buf[16], &usr_cmd.yawrate, 4);
-//             }
-//             else if (usr_cmd.submode == 2){
-//                 memcpy(&buf[12], &usr_cmd.des_tilt, 4);
-//                 memcpy(&buf[16], &usr_cmd.des_pan, 4);
-//             }
-//             break;
-//         case ZAS_MOUNT_MODE_STOW:
-//             break;
-//         case ZAS_MOUNT_MODE_CALIBRATE:
-//             break;
-//         case ZAS_MOUNT_MODE_HOME_TRACK:
-//             memcpy(&buf[8], &usr_cmd.trk_x, 4);
-//             memcpy(&buf[12], &usr_cmd.trk_y, 4);
-//             memcpy(&buf[7], &usr_cmd.trk_cmd, 1);
-//             break;
-//         case ZAS_MOUNT_MODE_HOME_TRACK_LOCK:
-//             break;
-//         case ZAS_MOUNT_MODE_ZOOMRATE:
-//             memcpy(&buf[7], &usr_cmd.ZoomRate, 2);
-//             break;
-//         case ZAS_MOUNT_MODE_ZOOMPOS:
-//             memcpy(&buf[7], &usr_cmd.Zoom, 2);
-//             break;
-//         case ZAS_MOUNT_MODE_TRACKBOX_NUDGE:
-//             memcpy(&buf[8], &usr_cmd.offset_x, 1);
-//             memcpy(&buf[7], &usr_cmd.offset_y, 1);
-//             break;
-//         case ZAS_MOUNT_MODE_TRACKBOX_SIZE:
-//             memcpy(&buf[7], &usr_cmd.offset_box, 2);
-//             break;
-//         case ZAS_MOUNT_MODE_REBOOT:
-//             gcs().send_text(MAV_SEVERITY_WARNING, "ZAS Gimbal in REBOOT mode.");
-//             break;
-//         case ZAS_MOUNT_MODE_WHOT_BHOT:
-//             memcpy(&buf[7], &usr_cmd.wb_mode, 1);
-//             break;
-//         default:
-//             break;
-//     }
+    for (uint8_t cmd_counter_4 = 0; cmd_counter_4 < 5; cmd_counter_4++) {
 
-//     for (uint8_t i = 0;  i < ZAS_COMM_TX_PACKET_SIZE ; i++) {
-//         checksum += buf[i];
-//         _port->write( buf[i] );
-//     }
-//     _port->write(checksum);
+        if (!power_status_flag_zas) {
+            buf[0] = 0x41;
+            buf[1] = 0x42;
+            buf[2] = 0x54;
+            buf[3] = 0x53;
+            buf[4] = 0xE3;
+        } 
+    }
+
+
+
+    for (uint8_t i = 0;  i < ZAS_warhead_TX_PACKET_SIZE ; i++) {
+        checksum += buf[i];
+        _port->write( buf[i] );
+    }
+    _port->write(checksum);
+
+    if (power_status_flag_zas) {
+        hal.scheduler->delay(2000);
+        hal.gpio->pinMode(gpio_pin_wh, HAL_GPIO_OUTPUT);
+        hal.gpio->write(gpio_pin_wh, 1);
+    }
+
+    if (!power_status_flag_zas) {
+        hal.scheduler->delay(2000);
+        hal.gpio->pinMode(gpio_pin_wh, HAL_GPIO_OUTPUT);
+        hal.gpio->write(gpio_pin_wh, 0);
+    }
 
     return;
 }

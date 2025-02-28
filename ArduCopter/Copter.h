@@ -72,6 +72,7 @@
 #include <AP_OpticalFlow/AP_OpticalFlow.h>
 #include <AP_Winch/AP_Winch_config.h>
 #include <AP_SurfaceDistance/AP_SurfaceDistance.h>
+#include <ZAS_FPV_WH/zas_fpv_wh.h>
 
 // Configuration
 #include "defines.h"
@@ -460,6 +461,9 @@ private:
 #if OSD_ENABLED || OSD_PARAM_ENABLED
     AP_OSD osd;
 #endif
+
+    // zas fpv
+    ZAS_FPV_WH zas_fpv_wh;
 
     // Altitude
     int32_t baro_alt;            // barometer altitude in cm above home

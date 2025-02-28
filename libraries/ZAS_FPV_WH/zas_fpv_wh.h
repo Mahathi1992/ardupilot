@@ -9,10 +9,20 @@
  #include <AP_SerialManager/AP_SerialManager.h>
  #include <GCS_MAVLink/GCS_MAVLink.h>
  
- // define ZAS gimbal serial communication parameters
+
+ #define gpio_pin_wh 55
+ // define ZAS fpv warhead serial communication parameters
  #define ZAS_warhead_RX_PACKET_SIZE 6
  #define ZAS_warhead_TX_PACKET_SIZE 5
  #define warhead_PKT_FOOTER 0x0A 
+
+ #define warhead_ON_cmd 0x3F
+ #define warhead_OFF_cmd 0x0A
+ #define fire_cmd_from_ctrl 0xE2
+ #define NO_fire_cmd_from_ctrl 0x7C 
+
+ #define power_ON_status 0x9A
+ #define power_OFF_status 0xD4
  
  class ZAS_FPV_WH {
  public:
@@ -59,6 +69,13 @@
      uint8_t _command_id;
      uint8_t _payload_length;
      uint8_t _payload_counter;
+
+     bool power_status_flag_zas = false;
+     bool abort_status_flag_zas = false;
+     bool arm_status_flag_zas = false;
+     bool fire_status_flag_zas = false;
+
+     uint8_t power_status_prev = 0xA5;
 
      uint8_t response_power_byte_2;
      uint8_t response_power_byte_3;

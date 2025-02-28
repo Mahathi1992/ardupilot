@@ -137,6 +137,8 @@ void Copter::init_ardupilot()
     barometer.set_log_baro_bit(MASK_LOG_IMU);
     barometer.calibrate();
 
+    zas_fpv_wh.init();
+
 #if AP_RANGEFINDER_ENABLED
     // initialise rangefinder
     init_rangefinder();
