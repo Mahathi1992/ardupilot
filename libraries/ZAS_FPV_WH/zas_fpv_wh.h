@@ -75,6 +75,9 @@
      bool arm_status_flag_zas = false;
      bool fire_status_flag_zas = false;
 
+     bool arm_sent_flag = false;
+     bool disarm_sent_flag = false;
+
      uint8_t power_status_prev = 0xA5;
 
      uint8_t response_power_byte_2;
