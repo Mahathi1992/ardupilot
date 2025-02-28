@@ -667,6 +667,7 @@ static const ap_message STREAM_RC_CHANNELS_msgs[] = {
 };
 static const ap_message STREAM_EXTRA1_msgs[] = {
     MSG_ATTITUDE,
+    MSG_ZAS_ARM_ACK,
 #if AP_SIM_ENABLED
     MSG_SIMSTATE,
 #endif
@@ -693,7 +694,6 @@ static const ap_message STREAM_EXTRA2_msgs[] = {
 static const ap_message STREAM_EXTRA3_msgs[] = {
     MSG_AHRS,
     MSG_WIND,
-    MSG_ZAS_ARM_ACK,
 #if AP_RANGEFINDER_ENABLED
     MSG_RANGEFINDER,
 #endif
