@@ -105,19 +105,19 @@ void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
 
     if (response_power_byte_2 == 0x52 && response_power_byte_3 == 0x4F && response_power_byte_4 == 0x4B) {
         status.power_status = 0x9A;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead Powered ON");
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead Powered ON");
     } 
 
     if (!arm_sent_flag) {
         status.arm_status = 0x1B;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM NOT sent");
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM NOT sent");
     }
     if (response_arm_byte_2 == 0x4D && response_arm_byte_3 == 0x4F && response_arm_byte_4 == 0x4B && arm_sent_flag) {
         status.arm_status = 0xF3;
         gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARMED");
     } else if (response_arm_byte_2 != 0x4D && response_arm_byte_3 != 0x4F && response_arm_byte_4 != 0x4B && arm_sent_flag) {
         status.arm_status = 0x6E;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM sent but ACK NOT OK/ NOT received");
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM sent but ACK NOT OK/ NOT received");
     }
 
     if (response_fire_byte_2 == 0x52 && response_fire_byte_3 == 0x4F && response_fire_byte_4 == 0x4B) {
@@ -126,14 +126,14 @@ void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
 
     if (!disarm_sent_flag) {
         status.disarm_status = 0x47;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM NOT sent");
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM NOT sent");
     }
     if (response_abort_byte_2 == 0x54 && response_abort_byte_3 == 0x4F && response_abort_byte_4 == 0x4B && disarm_sent_flag) {
         status.disarm_status = 0xC1;
         gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARMED");
     } else if (response_abort_byte_2 != 0x54 && response_abort_byte_3 != 0x4F && response_abort_byte_4 != 0x4B && disarm_sent_flag) {
         status.disarm_status = 0x8D;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM sent but ACK NOT OK/ NOT received");
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM sent but ACK NOT OK/ NOT received");
     }
 
 
