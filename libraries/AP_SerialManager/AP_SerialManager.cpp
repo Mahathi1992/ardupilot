@@ -557,24 +557,25 @@ void AP_SerialManager::init()
 
                 case SerialProtocol_Generator:
                     break;
-#if HAL_MSP_ENABLED                    
+                  
                 case SerialProtocol_ZAS_FPV:
                     zas_fpv_wh_uart = uart;
                     uart->begin(map_baudrate(state[i].baud), AP_SERIALMANAGER_FPV_BUFSIZE_RX, AP_SERIALMANAGER_FPV_BUFSIZE_TX);
                     uart->set_flow_control(AP_HAL::UARTDriver::FLOW_CONTROL_DISABLE);
                     uart->printf("ZAS FPV warhead\r\n");
                 break;
-                case SerialProtocol_MSP:
-                case SerialProtocol_MSP_DisplayPort:
-                    // baudrate defaults to 115200
-                    state[i].baud.set_default(AP_SERIALMANAGER_MSP_BAUD/1000);
-                    uart->begin(state[i].baudrate(),
-                                         AP_SERIALMANAGER_MSP_BUFSIZE_RX,
-                                         AP_SERIALMANAGER_MSP_BUFSIZE_TX);
-                    uart->set_flow_control(AP_HAL::UARTDriver::FLOW_CONTROL_DISABLE);
-                    // Note init is handled by AP_MSP
-                    break;
-#endif
+// #if HAL_MSP_ENABLED  
+//                 case SerialProtocol_MSP:
+//                 case SerialProtocol_MSP_DisplayPort:
+//                     // baudrate defaults to 115200
+//                     state[i].baud.set_default(AP_SERIALMANAGER_MSP_BAUD/1000);
+//                     uart->begin(state[i].baudrate(),
+//                                          AP_SERIALMANAGER_MSP_BUFSIZE_RX,
+//                                          AP_SERIALMANAGER_MSP_BUFSIZE_TX);
+//                     uart->set_flow_control(AP_HAL::UARTDriver::FLOW_CONTROL_DISABLE);
+//                     // Note init is handled by AP_MSP
+//                     break;
+// #endif
 
 #if AP_SERIALMANAGER_IMUOUT_ENABLED
                 case SerialProtocol_IMUOUT:
