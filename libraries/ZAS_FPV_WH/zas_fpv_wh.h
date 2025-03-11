@@ -10,7 +10,8 @@
  #include <GCS_MAVLink/GCS_MAVLink.h>
  
 
- #define gpio_pin_wh 55
+ #define gpio_pin_wh 58 //55 for CUAVv5
+//  #define gpio_pin_wh 55
  // define ZAS fpv warhead serial communication parameters
  #define ZAS_warhead_RX_PACKET_SIZE 6
  #define ZAS_warhead_TX_PACKET_SIZE 5

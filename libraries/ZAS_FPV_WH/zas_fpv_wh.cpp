@@ -449,6 +449,14 @@ void ZAS_FPV_WH::write_zas_usr_cmd_fpv_wh()
     }
     _port->write(checksum);
 
+    // uint32_t boot_delay_now = AP_HAL::millis();
+    // static bool boot_delay_set = false;
+
+    // if (boot_delay_now - _last_frame_ms > 10000) {
+    //     boot_delay_set = true;
+    //     _last_frame_ms = boot_delay_now;
+    // }
+
     if (power_status_flag_zas) {
         
         hal.gpio->write(gpio_pin_wh, 1);
