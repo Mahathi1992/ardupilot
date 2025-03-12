@@ -1,7 +1,7 @@
 /*
  * Author       : Mahathi
- * Description  : mx28 gimbal Control functionality through serial port
- * Date         : 28-11-2024
+ * Description  : fpv warhead control functionality through serial port
+ * Date         : 27-02-2025
  */
 
  #pragma once
@@ -97,7 +97,7 @@
      uint8_t response_abort_byte_3;
      uint8_t response_abort_byte_4;
  
-     // struct definition for sending data from ZAS gimbal to GCS
+     // struct definition for sending data from ZAS warhead to GCS
      struct PACKED zas_fpv_status_t
      {
          uint8_t target_system;
@@ -106,17 +106,17 @@
          uint8_t disarm_status;
      };
  
-     // struct definition for sending data from AP to ZAS gimbal 
+     // struct definition for sending data from AP to ZAS warhead 
      struct PACKED zas_fpv_cmd_t
      {
          uint8_t wh_state_cmd = 0;
          uint8_t fire_cmd = 0;
      };
  
-     // get zas gimbal data from Alexmos.cpp
+     // get zas warhead data from serial port
      zas_fpv_status_t status = {};
  
-     // get GCS commands for ZAS gimbal to be used in Alexmos.cpp
+     // get GCS commands for ZAS warhead 
      zas_fpv_cmd_t usr_cmd = {};
  
  protected:
