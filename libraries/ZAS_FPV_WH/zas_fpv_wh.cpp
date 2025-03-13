@@ -77,19 +77,12 @@ void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
     mavlink_msg_zas_warhead_command_decode(&msg, &packet);
 
     usr_cmd.wh_state_cmd = packet.warhead_state; //mode=201
-    usr_cmd.fire_cmd = packet.fire_command; 
+    usr_cmd.fire_cmd = packet.fire_command;
 
-    //add delay for warhead power off
-    uint32_t powerOFF_delay_now = AP_HAL::millis();
-
-    if (!powerOFF_delay_set && (powerOFF_delay_now - _last_frame_ms_powerOFF > 2000)) {
-        powerOFF_delay_set = true;
-        _last_frame_ms_powerOFF = powerOFF_delay_now;
-    }
-
-    if (power_status_flag_zas){
+    // if (power_status_flag_zas || packet.warhead_state)
+    // {
         write_zas_usr_cmd_fpv_wh();
-    }
+    // }
 
     if (power_status_prev == 0xA5 && usr_cmd.wh_state_cmd == 0xA5) {
         hal.gpio->pinMode(gpio_pin_wh, HAL_GPIO_OUTPUT);
@@ -108,50 +101,56 @@ void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
     }
 
     gcs().send_text(MAV_SEVERITY_INFO, "hand controller commands decoded. wh_state: %d, fire_cmd: %d", packet.warhead_state, packet.fire_command);
-    
-    // _port->printf("ZAS_FPV_WH message sent to serial port. Serialx_protocol = 33.\r\n");
 }
 
 // function to send ZAS fpv warhead status to GCS
 
 void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
 {
-
+    // if (power_status_flag_zas){
+    //     // gcs().send_text(MAV_SEVERITY_INFO, "Warhead Power ON CMD sent from HC"); 
+    //     status.power_status = 0x9A; //only for debug
+    // }
     if (response_power_byte_2 == 0x52 && response_power_byte_3 == 0x4F && response_power_byte_4 == 0x4B) {
         status.power_status = 0x9A;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead Powered ON");
-    } else if (!power_status_flag_zas) {
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead Powered ON");
+    } 
+    if (!power_status_flag_zas) {
         status.power_status = 0xD4;
     }
 
     if (!arm_sent_flag && !abort_status_flag_zas) {
-        status.arm_status = 0x1B;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM NOT sent");
-    }
-    if (arm_sent_flag && response_arm_byte_2 == 0x4D && response_arm_byte_3 == 0x4F && response_arm_byte_4 == 0x4B) {
-        status.arm_status = 0xF3;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARMED");
-        response_abort_byte_2 = 0;
-        response_abort_byte_3 = 0;
-        response_abort_byte_4 = 0;
-        disarm_sent_flag = false;
-        arm_status_flag_zas = true;
-        abort_status_flag_zas = false;
-    } else if (arm_sent_flag && response_arm_byte_2 != 0x4D && response_arm_byte_3 != 0x4F && response_arm_byte_4 != 0x4B) {
-        status.arm_status = 0x6E;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM sent but ACK NOT OK/ NOT received");
-        disarm_sent_flag = false;
+            status.arm_status = 0x1B;
+            // gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM NOT sent");
+        }
+        if (power_status_flag_zas && !arm_status_flag_zas && response_arm_byte_2 == 0x4D && response_arm_byte_3 == 0x4F && response_arm_byte_4 == 0x4B)
+        {
+            status.arm_status = 0xF3;
+            gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARMED");
+            response_abort_byte_2 = 0;
+            response_abort_byte_3 = 0;
+            response_abort_byte_4 = 0;
+            disarm_sent_flag = false;
+            arm_status_flag_zas = true;
+            abort_status_flag_zas = false;
+        }
+        else if (power_status_flag_zas && arm_sent_flag && response_arm_byte_2 != 0x4D && response_arm_byte_3 != 0x4F && response_arm_byte_4 != 0x4B)
+        {
+            status.arm_status = 0x6E;
+            // gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM sent but ACK NOT OK/ NOT received");
+            disarm_sent_flag = false;
     }
 
     if (response_fire_byte_2 == 0x52 && response_fire_byte_3 == 0x4F && response_fire_byte_4 == 0x4B) {
         gcs().send_text(MAV_SEVERITY_WARNING, "Warhead Fired!");
     }
 
-    if (!disarm_sent_flag && !arm_status_flag_zas) {
+    if (!disarm_sent_flag && power_status_flag_zas) {
         status.disarm_status = 0x47;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM NOT sent");
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM NOT sent");
     }
-    if (disarm_sent_flag && response_abort_byte_2 == 0x54 && response_abort_byte_3 == 0x4F && response_abort_byte_4 == 0x4B) {
+    if (!power_status_flag_zas && !abort_status_flag_zas && response_abort_byte_2 == 0x54 && response_abort_byte_3 == 0x4F && response_abort_byte_4 == 0x4B)
+    {
         status.disarm_status = 0xC1;
         gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARMED");
         response_arm_byte_2 = 0;
@@ -160,21 +159,22 @@ void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
         arm_sent_flag = false;
         arm_status_flag_zas = false;
         abort_status_flag_zas = true;
-    } else if (disarm_sent_flag && response_abort_byte_2 != 0x54 && response_abort_byte_3 != 0x4F && response_abort_byte_4 != 0x4B) {
+    }
+    else if (!power_status_flag_zas && disarm_sent_flag && response_abort_byte_2 != 0x54 && response_abort_byte_3 != 0x4F && response_abort_byte_4 != 0x4B)
+    {
         status.disarm_status = 0x8D;
-        gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM sent but ACK NOT OK/ NOT received");
+        // gcs().send_text(MAV_SEVERITY_INFO, "Warhead DISARM sent but ACK NOT OK/ NOT received");
         arm_sent_flag = false;
     }
-
 
     static uint16_t counter = 0;
     // static bool print_flag = false;
     counter++;
-    if (counter > 50)
+    if (counter > 20)
     {
         counter = 0;
         // print_flag = true;
-        gcs().send_text(MAV_SEVERITY_INFO, "target_system: %d", status.target_system);
+        // gcs().send_text(MAV_SEVERITY_INFO, "target_system: %d", status.target_system);
         gcs().send_text(MAV_SEVERITY_INFO, "power_status: %d", status.power_status);
         gcs().send_text(MAV_SEVERITY_INFO, "arm_status: %d", status.arm_status);
         gcs().send_text(MAV_SEVERITY_INFO, "disarm_status: %d", status.disarm_status);
@@ -265,7 +265,7 @@ void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
                     }
                     
                 }
-                if (_payload_counter+1 == ZAS_warhead_RX_PACKET_SIZE) 
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE-1) 
                 {
                     if (print_flag && data == warhead_PKT_FOOTER) {
                             gcs().send_text(MAV_SEVERITY_INFO, "Footer: %x, %d", data, _payload_counter);
@@ -311,7 +311,7 @@ void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
                     }
                     
                 }
-                if (_payload_counter+1 == ZAS_warhead_RX_PACKET_SIZE) 
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE-1) 
                 {
                     if (print_flag && data == warhead_PKT_FOOTER) {
                             gcs().send_text(MAV_SEVERITY_INFO, "Footer: %x, %d", data, _payload_counter);
@@ -326,24 +326,24 @@ void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
                     if(_payload_counter == 2){
                         memcpy(&response_abort_byte_2, &_zas_buf[2],1);
                         if (print_flag) {
-                            gcs().send_text(MAV_SEVERITY_INFO, "ABORT response, Byte 1: %x, %d", response_abort_byte_2, _payload_counter);
+                            gcs().send_text(MAV_SEVERITY_INFO, "ABORT response, Byte 2: %x, %d", response_abort_byte_2, _payload_counter);
                         }
                     }
                     if(_payload_counter == 3){
                         memcpy(&response_abort_byte_3, &_zas_buf[3],1);
                         if (print_flag) {
-                            gcs().send_text(MAV_SEVERITY_INFO, "ABORT response, Byte 1: %x, %d", response_abort_byte_3, _payload_counter);
+                            gcs().send_text(MAV_SEVERITY_INFO, "ABORT response, Byte 3: %x, %d", response_abort_byte_3, _payload_counter);
                         }
                     }
                     if(_payload_counter == 4){
                         memcpy(&response_abort_byte_4, &_zas_buf[4],1);
                         if (print_flag) {
-                            gcs().send_text(MAV_SEVERITY_INFO, "ABORT response, Byte 1: %x, %d", response_abort_byte_4, _payload_counter);
+                            gcs().send_text(MAV_SEVERITY_INFO, "ABORT response, Byte 4: %x, %d", response_abort_byte_4, _payload_counter);
                         }
                     }
                     
                 }
-                if (_payload_counter+1 == ZAS_warhead_RX_PACKET_SIZE) 
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE-1) 
                 {
                     if (print_flag && data == warhead_PKT_FOOTER) {
                             gcs().send_text(MAV_SEVERITY_INFO, "Footer: %x, %d", data, _payload_counter);
@@ -384,7 +384,7 @@ void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
                     }
                     
                 }
-                if (_payload_counter+1 == ZAS_warhead_RX_PACKET_SIZE) 
+                if (_payload_counter++ == ZAS_warhead_RX_PACKET_SIZE) 
                 {
                     if (print_flag && data == warhead_PKT_FOOTER) {
                             gcs().send_text(MAV_SEVERITY_INFO, "Footer: %x, %d", data, _payload_counter);
@@ -396,7 +396,7 @@ void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
             case 10:
                 _step = 0;
                 _payload_counter = 0;
-                // _port->flush();
+                _port->flush();
                 break;
         }
 
@@ -429,7 +429,7 @@ void ZAS_FPV_WH::write_zas_usr_cmd_fpv_wh()
     //     return;
     // }
 
-    if (power_status_prev == 0xA5) {
+    if (status.power_status != 0x9A && power_status_flag_zas) {
         for (uint8_t cmd_counter = 0; cmd_counter < 5; cmd_counter++) {
             buf[0] = 0x50;
             buf[1] = 0x57;
@@ -487,26 +487,36 @@ void ZAS_FPV_WH::write_zas_usr_cmd_fpv_wh()
     // _port->write(checksum);
 
     if (power_status_flag_zas) {
-        
         hal.gpio->write(gpio_pin_wh, 1);
     }
 
-    if (!power_status_flag_zas and powerOFF_delay_set) {
+    // add delay for warhead power off
+    uint32_t powerOFF_delay_now = AP_HAL::millis();
+
+    if (!powerOFF_delay_set && (powerOFF_delay_now - _last_frame_ms_powerOFF > 2000))
+    {
+        powerOFF_delay_set = true;
+        _last_frame_ms_powerOFF = powerOFF_delay_now;
+    }
+
+    if (!power_status_flag_zas) {
         response_power_byte_2 = 0;
         response_power_byte_3 = 0;
         response_power_byte_4 = 0;
-        response_arm_byte_2 = 0;
-        response_arm_byte_3 = 0;
-        response_arm_byte_4 = 0;
-        response_abort_byte_2 = 0;
-        response_abort_byte_3 = 0;
-        response_abort_byte_4 = 0;
+        // response_arm_byte_2 = 0;
+        // response_arm_byte_3 = 0;
+        // response_arm_byte_4 = 0;
+        // response_abort_byte_2 = 0;
+        // response_abort_byte_3 = 0;
+        // response_abort_byte_4 = 0;
         arm_sent_flag = false;
         disarm_sent_flag = false;
         arm_status_flag_zas = false;
         abort_status_flag_zas = false;
-        powerOFF_delay_set = false;
-        hal.gpio->write(gpio_pin_wh, 0);
+        if (powerOFF_delay_set) {
+            powerOFF_delay_set = false;
+            hal.gpio->write(gpio_pin_wh, 0);
+        }
     }
 
     return;

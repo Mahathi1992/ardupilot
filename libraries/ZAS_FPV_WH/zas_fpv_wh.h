@@ -104,8 +104,8 @@
      {
          uint8_t target_system;
          uint8_t power_status;
-         uint8_t arm_status;
-         uint8_t disarm_status;
+         uint8_t arm_status = 27;
+         uint8_t disarm_status = 71;
      };
  
      // struct definition for sending data from AP to ZAS warhead 
