@@ -60,6 +60,7 @@
  
      AP_HAL::UARTDriver *_port;              // UART used to send data to receiver
      uint32_t _last_frame_ms;
+     uint32_t _last_frame_ms_powerOFF;
      // mavlink_channel_t chan;
      bool isChannelSet;
      bool isSerialInit;
@@ -71,6 +72,7 @@
      uint8_t _payload_length;
      uint8_t _payload_counter;
 
+     bool powerOFF_delay_set = false;
      bool power_status_flag_zas = false;
      bool abort_status_flag_zas = false;
      bool arm_status_flag_zas = false;
