@@ -6,7 +6,7 @@
 
 #include "ap_version.h"
 
-#define THISFIRMWARE "ZAS FPV v1.0.9"
+#define THISFIRMWARE "ZAS FPV v1.0.9 debug 001"
 
 // the following line is parsed by the autotest scripts
 #define FIRMWARE_VERSION 4,7,0,FIRMWARE_VERSION_TYPE_DEV

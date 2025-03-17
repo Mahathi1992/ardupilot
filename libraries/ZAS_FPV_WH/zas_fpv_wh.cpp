@@ -77,12 +77,7 @@ void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
     mavlink_msg_zas_warhead_command_decode(&msg, &packet);
 
     usr_cmd.wh_state_cmd = packet.warhead_state; //mode=201
-    usr_cmd.fire_cmd = packet.fire_command;
-
-    // if (power_status_flag_zas || packet.warhead_state)
-    // {
-        write_zas_usr_cmd_fpv_wh();
-    // }
+    usr_cmd.fire_cmd = packet.fire_command;    
 
     if (power_status_prev == 0xA5 && usr_cmd.wh_state_cmd == 0xA5) {
         hal.gpio->pinMode(gpio_pin_wh, HAL_GPIO_OUTPUT);
@@ -91,9 +86,11 @@ void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
     } else if (power_status_prev == 0xA5 && usr_cmd.wh_state_cmd == 0x3F) {
         power_status_prev = usr_cmd.wh_state_cmd;
         power_status_flag_zas = true;
+        gcs().send_text(MAV_SEVERITY_INFO, "POWER ON flag ***true***");
     } else if (power_status_prev == 0x3F && usr_cmd.wh_state_cmd == 0xA5) {
         power_status_prev = usr_cmd.wh_state_cmd;
         power_status_flag_zas = false;
+        gcs().send_text(MAV_SEVERITY_INFO, "POWER ON flag ___false___");
     } else if (power_status_prev == 0x3F && usr_cmd.wh_state_cmd == 0x3F) {
         // Do nothing
     } else {
@@ -101,16 +98,14 @@ void ZAS_FPV_WH::handle_zas_warhead_command(const mavlink_message_t &msg)
     }
 
     gcs().send_text(MAV_SEVERITY_INFO, "hand controller commands decoded. wh_state: %d, fire_cmd: %d", packet.warhead_state, packet.fire_command);
+
+    write_zas_usr_cmd_fpv_wh();
 }
 
 // function to send ZAS fpv warhead status to GCS
 
 void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
 {
-    // if (power_status_flag_zas){
-    //     // gcs().send_text(MAV_SEVERITY_INFO, "Warhead Power ON CMD sent from HC"); 
-    //     status.power_status = 0x9A; //only for debug
-    // }
     if (response_power_byte_2 == 0x52 && response_power_byte_3 == 0x4F && response_power_byte_4 == 0x4B) {
         status.power_status = 0x9A;
         // gcs().send_text(MAV_SEVERITY_INFO, "Warhead Powered ON");
@@ -122,9 +117,8 @@ void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
     if (!arm_sent_flag && !abort_status_flag_zas) {
             status.arm_status = 0x1B;
             // gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM NOT sent");
-        }
-        if (power_status_flag_zas && !arm_status_flag_zas && response_arm_byte_2 == 0x4D && response_arm_byte_3 == 0x4F && response_arm_byte_4 == 0x4B)
-        {
+    }
+    if (power_status_flag_zas && !arm_status_flag_zas && response_arm_byte_2 == 0x4D && response_arm_byte_3 == 0x4F && response_arm_byte_4 == 0x4B) {
             status.arm_status = 0xF3;
             gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARMED");
             response_abort_byte_2 = 0;
@@ -133,9 +127,7 @@ void ZAS_FPV_WH::send_zas_warhead_status(mavlink_channel_t chan)
             disarm_sent_flag = false;
             arm_status_flag_zas = true;
             abort_status_flag_zas = false;
-        }
-        else if (power_status_flag_zas && arm_sent_flag && response_arm_byte_2 != 0x4D && response_arm_byte_3 != 0x4F && response_arm_byte_4 != 0x4B)
-        {
+    } else if (power_status_flag_zas && arm_sent_flag && response_arm_byte_2 != 0x4D && response_arm_byte_3 != 0x4F && response_arm_byte_4 != 0x4B) {
             status.arm_status = 0x6E;
             // gcs().send_text(MAV_SEVERITY_INFO, "Warhead ARM sent but ACK NOT OK/ NOT received");
             disarm_sent_flag = false;
@@ -395,8 +387,8 @@ void ZAS_FPV_WH::read_incoming_zas_fpv_wh()
 
             case 10:
                 _step = 0;
-                _payload_counter = 0;
-                _port->flush();
+                // _payload_counter = 0;
+                // _port->flush();
                 break;
         }
 
@@ -442,12 +434,14 @@ void ZAS_FPV_WH::write_zas_usr_cmd_fpv_wh()
     for (uint8_t cmd_counter_2 = 0; cmd_counter_2 < 5; cmd_counter_2++) {
 
         if (response_power_byte_2 == 0x52 && response_power_byte_3 == 0x4F && response_power_byte_4 == 0x4B) {
-            buf[0] = 0x41;
-            buf[1] = 0x52;
-            buf[2] = 0x4D;
-            buf[3] = 0x53;
-            buf[4] = 0xE0;
-            arm_sent_flag = true;
+            if (usr_cmd.wh_state_cmd != 0xE2) {
+                buf[0] = 0x41;
+                buf[1] = 0x52;
+                buf[2] = 0x4D;
+                buf[3] = 0x53;
+                buf[4] = 0xE0;
+                arm_sent_flag = true;
+            }
         } else {
             arm_sent_flag = false;
         }
